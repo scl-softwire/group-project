@@ -35,7 +35,7 @@ public class AuthService {
 
 
     public boolean validate(HttpServletRequest request) {
-        if (request.getCookies().length > 0) for (Cookie cookie : request.getCookies())
+        for (Cookie cookie : request.getCookies())
             if (cookie.getName().equalsIgnoreCase("token"))
                 return tokenAuthenticationService.validateToken(request.getCookies()[0].getValue());
         return false;
