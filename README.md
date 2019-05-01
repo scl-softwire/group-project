@@ -2,7 +2,8 @@
 
 ## Description
 
-TODO: Write a description
+This project is to develop a website, to be used in waiting rooms, showing various forms of media, information, the latest news, videos, etc, etc. 
+The website will also need an admin page, allowing authorised people to alter and update content and customise how the slideshow is displayed (e.g. duration, size).
 
 ## Development - Zero 2 Hero
 
