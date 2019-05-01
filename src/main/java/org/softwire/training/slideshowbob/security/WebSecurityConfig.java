@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/styles/*").permitAll()
                 .antMatchers("/js/*").permitAll()
                 .antMatchers("/favicon.ico").permitAll()
+                .antMatchers("/slideshow").permitAll()
                 .anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/");
         http.apply(new JwtTokenFilterConfigurer(tokenAuthenticationService));
