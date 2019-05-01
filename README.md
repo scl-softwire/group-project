@@ -34,6 +34,10 @@ All schema changes _must_ be done through a database migrations. This means that
 
 ## Development - Process
 
+### Pairing
+
+Feel free to work in pairs whenever you feel like it! Pairing is a great opportunity to learn from each other!
+
 ### Feature branches
 
 As this project is a large group effort, we'll use a slightly more structured process when it comes to writing and committing code, to avoid treading on each others' toes.
