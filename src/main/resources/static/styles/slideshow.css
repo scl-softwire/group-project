@@ -28,33 +28,6 @@ body {
     -moz-animation: imageAnimation 24s linear infinite 0s;
     animation: imageAnimation 24s linear infinite 0s;
 }
-.slideshow li h3 {
-    position: absolute;
-    text-align: center;
-    z-index: 2;
-    bottom: 150px;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    font-size: 4.0625em;
-    font-family: 'Josefin Sans', sans-serif;
-    text-transform: uppercase;
-    color: #fff;
-    -webkit-animation: titleAnimation 24s linear 1 0s;
-    -moz-animation: titleAnimation 24s linear 1 0s;
-    animation: titleAnimation 24s linear 1 0s;
-}
-@media only screen and (min-width: 768px) {
-    .slideshow li h3 {
-        bottom: 30px;
-        font-size: 8.125em;
-    }
-}
-@media only screen and (min-width: 1024px) {
-    .slideshow li h3 {
-        font-size: 10.9375em;
-    }
-}
 
 @-webkit-keyframes imageAnimation {
     0% {
@@ -106,57 +79,6 @@ body {
         -webkit-animation-timing-function: ease-out;
         -moz-animation-timing-function: ease-out;
         animation-timing-function: ease-out;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@-webkit-keyframes titleAnimation {
-    0% {
-        opacity: 0;
-    }
-    12.5% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@-moz-keyframes titleAnimation {
-    0% {
-        opacity: 0;
-    }
-    12.5% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@keyframes titleAnimation {
-    0% {
-        opacity: 0;
-    }
-    12.5% {
-        opacity: 1;
     }
     25% {
         opacity: 1;
