@@ -36,13 +36,13 @@ body {
 
 .dots-button {
     background: none;
-    color: #00b7b7;
+    color: #e4bbe6;
 }
 .dots-button:hover {
     -webkit-animation: halftone 1s forwards;
     animation: halftone 1s forwards;
-    background: radial-gradient(circle, rgb(0, 183, 183) 0.2em, transparent 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, rgb(0, 183, 183) 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em 1.25em;
-    color: #8C8C8C;
+    background: radial-gradient(circle, rgb(146, 176, 208) 0.2em, transparent 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, rgb(146, 176, 208) 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em 1.25em;
+    color: #e4bbe6;
 }
 
 @-webkit-keyframes halftone {
@@ -59,13 +59,13 @@ body {
 
 .sawtooth-button {
     background: none;
-    color: #d3f169;
+    color: #92b0d0;
 }
 .sawtooth-button:hover {
     -webkit-animation: sawtooth 0.35s infinite linear;
     animation: sawtooth 0.35s infinite linear;
-    background: linear-gradient(45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em, linear-gradient(-45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em;
-    color: #715ed0;
+    background: linear-gradient(45deg, #e4bbe6 0.5em, transparent 0.5em) 0 0/1em 1em, linear-gradient(-45deg, #e4bbe6 0.5em, transparent 0.5em) 0 0/1em 1em;
+    color: #92b0d0;
 
 }
 
