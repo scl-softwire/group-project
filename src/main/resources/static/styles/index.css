@@ -6,14 +6,19 @@
     background-color: #e9ecef;
     border-radius: 30px;
     padding: 50px 30px;
+    justify-content: center;
+    vertical-align: middle;
 }
 
 .jumbotron h1 {
     margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
 
     font-family: "Segoe UI", sans-serif;
     font-weight: normal;
-    font-size: 48px;
+    font-size: 56px;
     line-height: 100%;
 }
 
@@ -22,3 +27,69 @@
     margin: 15px 0 0 0;
 }
 
+.index-buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background: none;
+    border: 2px solid;
+    border-bottom-width: 4px;
+    font: inherit;
+    font-size: 20px;
+    letter-spacing: inherit;
+    margin: 1em;
+    padding: 1em 2em;
+    text-transform: inherit;
+    transition: color 1s;
+    text-align: center;
+}
+
+
+.slideshow-button {
+    background: none;
+    color: #9c89f7;
+}
+.slideshow-button:hover {
+    -webkit-animation: halftone 1s forwards;
+    animation: halftone 1s forwards;
+    background: radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em 1.25em;
+    color: #e4f789;
+}
+
+@-webkit-keyframes halftone {
+    100% {
+        background-size: 2.375em 2.375em, 0.1em 0.1em;
+    }
+}
+
+@keyframes halftone {
+    100% {
+        background-size: 2.375em 2.375em, 0.1em 0.1em;
+    }
+}
+
+.admin-button {
+    background: none;
+    color: #d3f169;
+}
+.admin-button:hover {
+    -webkit-animation: sawtooth 0.35s infinite linear;
+    animation: sawtooth 0.35s infinite linear;
+    background: linear-gradient(45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em, linear-gradient(-45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em;
+    color: #715ed0;
+
+}
+
+@-webkit-keyframes sawtooth {
+    100% {
+        background-position: 1em 0;
+    }
+}
+
+@keyframes sawtooth {
+    100% {
+        background-position: 1em 0;
+    }
+}
