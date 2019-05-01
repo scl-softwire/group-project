@@ -1,12 +1,12 @@
-package org.softwire.training.groupproject;
+package org.softwire.training.slideshowbob;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GroupProjectMain {
+public class SlideshowBob {
     public static void main(String[] args) {
         FlywayDatabaseMigrator.migrateDatabase();
-        SpringApplication.run(GroupProjectMain.class, args);
+        SpringApplication.run(SlideshowBob.class, args);
     }
 }

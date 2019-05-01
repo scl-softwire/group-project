@@ -1,6 +1,6 @@
-package org.softwire.training.groupproject.services;
+package org.softwire.training.slideshowbob.services;
 
-import org.softwire.training.groupproject.models.database.Technology;
+import org.softwire.training.slideshowbob.models.database.Technology;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

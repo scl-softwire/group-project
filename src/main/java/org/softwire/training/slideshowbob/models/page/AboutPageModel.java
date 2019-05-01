@@ -1,6 +1,6 @@
-package org.softwire.training.groupproject.models.page;
+package org.softwire.training.slideshowbob.models.page;
 
-import org.softwire.training.groupproject.models.database.Technology;
+import org.softwire.training.slideshowbob.models.database.Technology;
 
 import java.util.List;
 

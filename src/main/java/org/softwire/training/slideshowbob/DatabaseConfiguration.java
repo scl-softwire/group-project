@@ -1,4 +1,4 @@
-package org.softwire.training.groupproject;
+package org.softwire.training.slideshowbob;
 
 public class DatabaseConfiguration {
     private final String hostname = System.getenv("DB_HOSTNAME");

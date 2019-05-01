@@ -1,4 +1,4 @@
-package org.softwire.training.groupproject.models.database;
+package org.softwire.training.slideshowbob.models.database;
 
 public class Technology {
     private int id;

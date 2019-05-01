@@ -1,4 +1,4 @@
-package org.softwire.training.groupproject.controllers;
+package org.softwire.training.slideshowbob.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package org.softwire.training.groupproject;
+package org.softwire.training.slideshowbob;
 
 import org.flywaydb.core.Flyway;
 

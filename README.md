@@ -1,4 +1,4 @@
-# Group Project (TODO: Come up with a name)
+# Slideshow Bob
 
 ## Description
 
