@@ -1,8 +1,8 @@
-package org.softwire.training.groupproject.controllers;
+package org.softwire.training.slideshowbob.controllers;
 
-import org.softwire.training.groupproject.models.database.Technology;
-import org.softwire.training.groupproject.models.page.AboutPageModel;
-import org.softwire.training.groupproject.services.TechnologyService;
+import org.softwire.training.slideshowbob.models.database.Technology;
+import org.softwire.training.slideshowbob.models.page.AboutPageModel;
+import org.softwire.training.slideshowbob.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
