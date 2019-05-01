@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group Project - Home</title>
+
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/uploadImage.css"/>
+
+</head>
+<body>
+<nav th:fragment="navbar">
+    <div class="navbar-title">
+        <a href="/">Group Project</a>
+    </div>
+    <div class="navbar-item">
+        <a href="/about">About</a>
+    </div>
+
+</nav>
+
+<div class="main-content">
+    <h1 id="all-photographs">All Photographs</h1>
+    <div class="thumbnails"></div>
+    <div class="overlay"></div>
+</div>
+</body>
+</html>
