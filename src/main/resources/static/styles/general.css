@@ -19,3 +19,64 @@ body {
     max-width: 800px;
     flex-grow: 1;
 }
+
+.btn {
+    background: none;
+    border: 2px solid;
+    border-bottom-width: 4px;
+    font: inherit;
+    font-size: 20px;
+    letter-spacing: inherit;
+    margin: 1em;
+    padding: 1em 2em;
+    text-transform: inherit;
+    transition: color 1s;
+    text-align: center;
+}
+
+.dots-button {
+    background: none;
+    color: #00b7b7;
+}
+.dots-button:hover {
+    -webkit-animation: halftone 1s forwards;
+    animation: halftone 1s forwards;
+    background: radial-gradient(circle, rgb(0, 183, 183) 0.2em, transparent 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, rgb(0, 183, 183) 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em 1.25em;
+    color: #8C8C8C;
+}
+
+@-webkit-keyframes halftone {
+    100% {
+        background-size: 2.375em 2.375em, 0.1em 0.1em;
+    }
+}
+
+@keyframes halftone {
+    100% {
+        background-size: 2.375em 2.375em, 0.1em 0.1em;
+    }
+}
+
+.sawtooth-button {
+    background: none;
+    color: #d3f169;
+}
+.sawtooth-button:hover {
+    -webkit-animation: sawtooth 0.35s infinite linear;
+    animation: sawtooth 0.35s infinite linear;
+    background: linear-gradient(45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em, linear-gradient(-45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em;
+    color: #715ed0;
+
+}
+
+@-webkit-keyframes sawtooth {
+    100% {
+        background-position: 1em 0;
+    }
+}
+
+@keyframes sawtooth {
+    100% {
+        background-position: 1em 0;
+    }
+}

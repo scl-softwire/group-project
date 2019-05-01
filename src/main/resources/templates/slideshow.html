@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <!--@thymesVar id="model" type="java.util.List"-->
+
+    <head>
+        <link rel="stylesheet" href="/styles/slideshow.css"/>
+    </head>
+
+    <body>
+
+        <ul class='slideshow'>
+            <li th:each="imageUrl, iter : ${model}">
+                <span th:style="'background-image: url(' + ${imageUrl} + '); animation-delay: ' + ${iter.index * 6} + 's; -webkit-animation-delay: ' + ${iter.index * 6} + 's; -moz-animation-delay: ' + ${iter.index * 6} + 's;'"></span>
+            </li>
+        </ul>
+
+    </body>
+
+
+</html>
