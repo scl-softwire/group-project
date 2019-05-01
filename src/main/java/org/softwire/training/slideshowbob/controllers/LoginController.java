@@ -1,0 +1,41 @@
+package org.softwire.training.slideshowbob.controllers;
+
+import org.softwire.training.slideshowbob.services.auth.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
+public class LoginController {
+
+    private final AuthService authService;
+
+    @Autowired
+    public LoginController(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView loginView() {
+        return new ModelAndView("login");
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginPost(@RequestParam("username") String username, @RequestParam("password") String password) {
+        return authService.login(username, password);
+    }
+
+    @RequestMapping("/refreshToken")
+    @ResponseBody
+    public boolean refreshToken(HttpServletRequest request) {
+        return authService.refresh(request.getRemoteUser()) != null;
+    }
+}
