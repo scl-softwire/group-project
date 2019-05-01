@@ -58,7 +58,16 @@ $ git commit -m "Informative message"
 $ git push -u origin <branch-name>
 ```
 
-Then, from GitHub, open a Pull Request for your feature branch. This will let someone review your code, make comments on it, and eventually approve it to be merged into the master branch.
+Then, from GitHub, open a Pull Request for your feature branch. This will let someone review your code, make comments on it, and eventually approve it to be merged into the master branch. Request a review of the PR, and when it's been reviewed, if more changes need to be made:
+
+```
+// Make your code changes...
+$ git add .
+$ git commit -m "Fixed XYZ"
+$ git push
+```
+
+Once the review is approved, you can merge the PR from GitHub.
 
 ### Trello Board
 
