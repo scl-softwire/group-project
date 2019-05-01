@@ -1,6 +1,6 @@
 package org.softwire.training.slideshowbob.security.jwt;
 
-import org.softwire.training.slideshowbob.CustomException;
+import org.softwire.training.slideshowbob.AuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -27,7 +27,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 Authentication auth = tokenAuthenticationService.getAuthentication(token);
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
-        } catch (CustomException ex) {
+        } catch (AuthenticationException ex) {
             //this is very important, since it guarantees the user is not authenticated at all
             SecurityContextHolder.clearContext();
             httpServletResponse.sendError(ex.getHttpStatus().value(), ex.getMessage());

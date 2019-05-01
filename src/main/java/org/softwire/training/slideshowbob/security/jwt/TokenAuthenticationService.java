@@ -4,7 +4,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.softwire.training.slideshowbob.CustomException;
+import org.softwire.training.slideshowbob.AuthenticationException;
+import org.softwire.training.slideshowbob.security.SlideShowBobUserDetailsService;
 import org.softwire.training.slideshowbob.security.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ import java.util.Date;
 public class TokenAuthenticationService {
 
 
-    private long EXPIRATIONTIME = 1000 * 60 * 15; // 15 min
+    private long EXPIRATIONTIME = 1000 * 60 * 60 * 24 * 3; // 3 days
     private String secret = System.getenv("JWT_AUTH_KEY");
     private String tokenPrefix = "Bearer";
     private String headerString = "Authorization";
@@ -68,7 +69,7 @@ public class TokenAuthenticationService {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
-            throw new CustomException("Expired or invalid JWT token", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new AuthenticationException("Expired or invalid JWT token", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

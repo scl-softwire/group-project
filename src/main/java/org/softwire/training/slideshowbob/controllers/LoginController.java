@@ -33,9 +33,9 @@ public class LoginController {
         return authService.login(username, password);
     }
 
-    @RequestMapping("/2Z5SIQQUHCWO2NJU1KX5")
+    @RequestMapping("/refreshToken")
     @ResponseBody
-    public boolean loginTest(HttpServletRequest request) {
+    public boolean refreshToken(HttpServletRequest request) {
         return authService.refresh(request.getRemoteUser()) != null;
     }
 }

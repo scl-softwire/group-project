@@ -1,4 +1,4 @@
-package org.softwire.training.slideshowbob.security.jwt;
+package org.softwire.training.slideshowbob.security;
 
 import org.softwire.training.slideshowbob.security.UserPrincipal;
 import org.softwire.training.slideshowbob.services.UsersService;
