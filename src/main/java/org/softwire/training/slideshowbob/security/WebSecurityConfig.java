@@ -26,18 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable(); // disable csrf for our requests.
-
-        http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/signup").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/styles/*").permitAll()
-                .antMatchers("/js/*").permitAll()
-                .antMatchers("/favicon.ico").permitAll()
-                .antMatchers("/slideshow").permitAll()
-                .anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/");
         http.apply(new JwtTokenFilterConfigurer(tokenAuthenticationService));
-
     }
 }
