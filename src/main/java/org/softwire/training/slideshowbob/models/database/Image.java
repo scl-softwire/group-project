@@ -2,7 +2,7 @@ package org.softwire.training.slideshowbob.models.database;
 
 import java.time.LocalDateTime;
 
-public class UploadImages {
+public class Image {
     private int id;
     LocalDateTime dateTimeStamp;
     String imageName;
