@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Group Project - Admin</title>
+
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/index.css"/>
 </head>
+
 <body>
 
+<div th:replace="fragments/navbar :: navbar">
+    <!-- This element is replaced by the HTML in fragments/navbar.html -->
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Admin Page</h1>
+
+        <div class="index-buttons-container">
+            <a href="/admin/add-del"><button class="btn dots-button">Add/Delete Photos</button></a>
+            <a href="/admin/select"><button class="btn sawtooth-button">Select Photos</button></a>
+        </div>
+
+    </div>
+</div>
+
 </body>
+
+
 </html>
