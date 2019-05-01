@@ -6,18 +6,21 @@ nav {
     flex-direction: row;
     align-items: baseline;
 
-    background-color: #343a40;
-    padding: 15px 0;
+    background-color: #92b0d0;
+    /*background-image: linear-gradient(to right, #92b0d0, #92b0d0, #92b0d0, #e4bbe6);*/
+    padding: 5px 0;
 }
 
 .navbar-title {
     margin: 0 5px 0 20px;
-    font-family: "Segoe UI", sans-serif;
     font-size: 30px;
-    color: lightgray;
+    color: white;
+    text-shadow: -1px 0 #e4bbe6, 0 1px #e4bbe6, 1px 0 #e4bbe6, 0 -1px #e4bbe6;
+
 }
 .navbar-title:hover {
-    color: white;
+    color: #fde0ff;
+    text-shadow: -1px 0 #e4bbe6, 0 1px #e4bbe6, 1px 0 #e4bbe6, 0 -1px #e4bbe6;
 }
 
 .navbar-title a {
@@ -25,19 +28,4 @@ nav {
     text-decoration: none;
 }
 
-
-.navbar-item {
-    margin-left: 20px;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 20px;
-    color: grey;
-}
-.navbar-item:hover {
-    color: lightgray;
-}
-
-.navbar-item a {
-    color: unset;
-    text-decoration: none;
-}
 
