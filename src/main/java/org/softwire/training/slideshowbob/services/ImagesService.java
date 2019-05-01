@@ -23,11 +23,10 @@ public class ImagesService extends DatabaseService {
         );
     }
 
-
-        public List<UploadImages> getAllImages () {
+        public List<Image> getAllImages () {
             return jdbi.withHandle(handle ->
                     handle.createQuery("SELECT * FROM upload_images ")
-                    .mapToBean(UploadImages.class)
+                    .mapToBean(Image.class)
                     .list()
                     );
         }
