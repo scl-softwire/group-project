@@ -31,7 +31,7 @@ public class ImageController {
 
         imagesService.deleteImage(imageId);
 
-        return new RedirectView("/images");
+        return new RedirectView("/admin/manage");
     }
 
     @RequestMapping("/image-edit/edited")

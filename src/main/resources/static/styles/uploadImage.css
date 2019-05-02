@@ -1,35 +1,41 @@
 .thumbnail-image-div:hover {
+    -webkit-transform: scale(2);
     transform: scale(2);
+    -webkit-transition: transform 1s;
     transition: transform 1s;
 }
 
 .thumbnail-image-div:hover .thumbnail-image {
     transform: scale(1);
+    -webkit-transform: scale(1);
     transition: transform 1s;
+    -webkit-transition: transform 1s;
 }
 
 .thumbnail-image-div:hover .overlay {
     display: block;
     transform: scale(2);
+    -webkit-transform: scale(2);
     transition: transform 1s;
+    -webkit-transition: transform 1s;
 }
-.thumbnail-image-div:hover #delete-entry {
-    display: none;
-}
+
 .thumbnails {
     width: 100%;
+    height: auto;
     padding: 0.5vw;
     box-sizing: border-box;
     display: flex;
     align-items: stretch;
     justify-content: center;
     flex-wrap: wrap;
+
 }
 
 .thumbnail-image {
     border-radius: 20px;
-    width: 20vw;
-    max-height: 13vw;
+    max-height: 14vw;
+    max-width: 20vw;
 }
 
 .thumbnail-image-div {
@@ -41,6 +47,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    object-fit: contain;
 
 
     width: 22vw;
@@ -100,4 +107,13 @@
     flex-grow: 1;
     flex-shrink: 1;
     justify-content: space-between;
+}
+.delete-image{
+    width: 2vw;
+    height: 1vw;
+}
+
+.edit-image{
+    width: 2vw;
+    height: 1vw;
 }
