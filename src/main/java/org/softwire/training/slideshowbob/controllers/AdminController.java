@@ -54,7 +54,7 @@ public class AdminController {
         image.setImageName("G");
         image.setLicense("Asdf");
         image.setDateTimeStamp(LocalDateTime.now());
-        image.setUrl("https://hips.hearstapps.com/esquireuk.cdnds.net/17/08/1024x576/hd-aspect-1487849133-c2d79717-d113-442f-9165-af9685a4e404.jpg?resize=480:*");
+        image.setUrl("https://static.gamespot.com/uploads/scale_super/171/1712892/3527994-helen%20sloan%20-%20hbo%20%286%29%20copy.jpg");
 
         return new ModelAndView("edit", "image", image);
 
