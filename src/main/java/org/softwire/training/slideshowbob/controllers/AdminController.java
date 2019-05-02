@@ -39,6 +39,7 @@ public class AdminController {
     ModelAndView allImages() {
         List<Image> allImages = new ArrayList<>();
         return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
+    }
 
     @RequestMapping("/uploadImage")
     ModelAndView uploadImage() {
