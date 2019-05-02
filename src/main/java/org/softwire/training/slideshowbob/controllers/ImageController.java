@@ -17,7 +17,9 @@ public class ImageController {
     private final ImagesService imagesService;
 
     @Autowired
-    public ImageController (ImagesService imagesService) {this.imagesService = imagesService;}
+    public ImageController (ImagesService imagesService) {
+        this.imagesService = imagesService;
+    }
 
     @RequestMapping(value = "/added", method = RequestMethod.POST)
     RedirectView uploadImage(@ModelAttribute Image image) {
