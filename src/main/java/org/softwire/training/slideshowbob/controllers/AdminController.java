@@ -21,4 +21,9 @@ public class AdminController {
         return new ModelAndView("admin");
     }
 
+    @RequestMapping("/uploadImage")
+    ModelAndView uploadImage() {
+        return new ModelAndView("uploadImage");
+    }
+
 }

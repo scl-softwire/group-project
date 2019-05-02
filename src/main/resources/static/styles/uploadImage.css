@@ -1,0 +1,85 @@
+.thumbnail-image-div:hover {
+    transform: scale(2);
+    transition: transform 1s;
+}
+
+.thumbnail-image-div:hover .thumbnail-image {
+    transform: scale(1);
+    transition: transform 1s;
+}
+
+.thumbnail-image-div:hover .overlay {
+    display: block;
+    transform: scale(2);
+    transition: transform 1s;
+}
+.thumbnail-image-div:hover #delete-entry {
+    display: none;
+}
+.thumbnails {
+    width: 100%;
+    padding: 0.5vw;
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.thumbnail-image {
+    border-radius: 20px;
+    width: 20vw;
+    max-height: 13vw;
+}
+
+.thumbnail-image-div {
+    background-color: lavenderblush;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+
+    width: 22vw;
+    height: 18vw;
+    margin: 10px;
+    padding: 10px 0;
+}
+
+
+.overlay {
+    display: none;
+    font-size: 0.3vw;
+    word-wrap: break-word;
+    width: 10vw;
+}
+.uploadImage {
+    width: 10vw;
+    height: 10vw;
+    margin: auto;
+    padding: 1vw;
+    background-color: #e9ecef;
+    border-radius: 30px;
+    justify-content: center;
+    vertical-align: middle;
+}
+.main-content{
+    width: 50%;
+    text-align: center;
+}
+
+.uploadImageButton {
+    width: 8vw;
+    height: 8vw;
+    padding: 0; !important;
+    border: none; !important;
+}
+
+.uploadImageButtonImage {
+    width: 8vw;
+    height: 8vw;
+    padding: auto;
+}

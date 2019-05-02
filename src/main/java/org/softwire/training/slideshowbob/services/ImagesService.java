@@ -11,8 +11,8 @@ public class ImagesService extends DatabaseService {
     public void uploadImage(Image image) {
         jdbi.useHandle(handle -> handle.createUpdate(
                 "INSERT INTO upload_images " +
-                        "(date_time_stamp, image_name, author, license, url) " +
-                        "VALUES (:timestamp, :imageName, : :author, :license, :url)")
+                    "(date_time_stamp, image_name, author, license, url) " +
+                    "VALUES (:timestamp, :imageName, :author, :license, :url)")
                 .bind("timestamp", LocalDateTime.now())
                 .bind("imageName", image.getImageName())
                 .bind("author", image.getAuthor())
