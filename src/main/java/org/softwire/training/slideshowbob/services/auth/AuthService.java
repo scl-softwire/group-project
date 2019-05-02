@@ -8,6 +8,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public class AuthService {
 
@@ -28,6 +31,14 @@ public class AuthService {
             throw new AuthenticationException("Invalid username/password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
 
         }
+    }
+
+
+    public boolean validate(HttpServletRequest request) {
+        for (Cookie cookie : request.getCookies())
+            if (cookie.getName().equalsIgnoreCase("token"))
+                return tokenAuthenticationService.validateToken(request.getCookies()[0].getValue());
+        return false;
     }
 
     public String refresh(String username) {
