@@ -33,15 +33,16 @@ public class AdminController {
         return new ModelAndView("admin");
     }
 
-    @RequestMapping("/admin/manage")
+    @RequestMapping("/manage")
     ModelAndView manage() {
-        return new ModelAndView("manage");
+        List<Image> allImages = imagesService.getAllImages();
+        return new ModelAndView("manage","model", new ImagePageModel(allImages));
     }
 
 
     @RequestMapping("/select-images")
     ModelAndView allImages() {
-        List<Image> allImages = new ArrayList<>();
+        List<Image> allImages = imagesService.getAllImages();
         return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
 
     }
