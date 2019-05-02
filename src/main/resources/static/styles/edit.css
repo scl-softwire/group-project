@@ -1,0 +1,16 @@
+.imagedetails {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+}
+
+.formdetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 10px;
+}
+
+.savebutton {
+
+}
