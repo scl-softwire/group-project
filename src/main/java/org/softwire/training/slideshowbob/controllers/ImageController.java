@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("/images")
+@RequestMapping("/admin/images")
 public class ImageController {
+
     private final ImagesService imagesService;
 
     @Autowired
@@ -31,5 +32,14 @@ public class ImageController {
         imagesService.deleteImage(imageId);
 
         return new RedirectView("/images");
+    }
+
+    @RequestMapping("/image-edit/edited")
+    RedirectView editImage(@ModelAttribute Image image) {
+
+        imagesService.editImage(image);
+
+        // TODO: add the real redirst URL
+        return new RedirectView("TODO");
     }
 }
