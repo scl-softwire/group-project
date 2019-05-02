@@ -5,11 +5,14 @@ import org.softwire.training.slideshowbob.models.database.Image;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SlideshowService extends DatabaseService {
 
-    public void createSlideshow(Slideshow slideshow) {
+    public void createSlideshow(Slideshow slideshow, List<Image> images) {
         // Create Slideshow in Slideshow Table
+
         jdbi.useHandle(handle -> {
             int id = handle.createUpdate("INSERT INTO slideshows " +
                     "(author_username) VALUES (:author_username)")
@@ -17,10 +20,11 @@ public class SlideshowService extends DatabaseService {
                     .executeAndReturnGeneratedKeys("id")
                     .mapTo(Integer.class)
                     .findOnly();
+
             PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow-slides " +
                     "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)")
                     .bind("slideshow_id", id);
-            for (Image image : slideshow.getSlideList()) {
+            for (Image image : images) {
                 batch.bind("slide_id", image.getId());
             }
             batch.execute();

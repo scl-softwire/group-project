@@ -20,5 +20,14 @@ public class AdminController {
     ModelAndView admin() {
         return new ModelAndView("admin");
     }
+    //  Need to add a POST request
+//    Create a slideshow - Controller
+
+//  in the request body -
+//        - Authors name
+//            - get AdminUser from username - (method exists in UserService)
+//
+//        - list of images to go into the new slideshow
+//        -
 
 }
