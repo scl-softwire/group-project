@@ -24,9 +24,9 @@ body {
     z-index: 0;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-animation: imageAnimation 24s linear infinite 0s;
-    -moz-animation: imageAnimation 24s linear infinite 0s;
-    animation: imageAnimation 24s linear infinite 0s;
+    /*-webkit-animation: imageAnimation 18s linear infinite 0s;*/
+    /*-moz-animation: imageAnimation 18s linear infinite 0s;*/
+    /*animation: imageAnimation 18s linear infinite 0s;*/
 }
 
 @-webkit-keyframes imageAnimation {
