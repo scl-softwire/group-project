@@ -1,18 +1,18 @@
 package org.softwire.training.slideshowbob.controllers;
 
 import org.softwire.training.slideshowbob.models.database.Image;
+import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.softwire.training.slideshowbob.models.pages.ImagePageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
+import org.softwire.training.slideshowbob.services.SlideshowService;
 import org.softwire.training.slideshowbob.services.auth.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,27 +22,28 @@ public class AdminController {
 
     private final ImagesService imagesService;
     private final AuthService authService;
+    private final SlideshowService slideshowService;
 
     @Autowired
-    public AdminController(ImagesService imagesService, AuthService authService) {
+    public AdminController(ImagesService imagesService, AuthService authService, SlideshowService slideshowService) {
         this.imagesService = imagesService;
         this.authService = authService;
+        this.slideshowService = slideshowService;
     }
 
     @RequestMapping("")
     ModelAndView admin() {
         return new ModelAndView("admin");
     }
-    //  Need to add a POST request
-//    Create a slideshow - Controller
 
-//  in the request body -
-//        - Authors name
-//            - get AdminUser from username - (method exists in UserService)
-//
-//        - list of images to go into the new slideshow
-//        -
 
+    @RequestMapping(value = "/select-images", method = RequestMethod.POST)
+    RedirectView createSlideshow(@ModelAttribute Slideshow slideshow, List<Image> images) {
+
+        slideshowService.createSlideshow(slideshow,images);
+
+        return new RedirectView("/admin");
+    }
 
     @RequestMapping("/manage")
     ModelAndView manage() {
@@ -50,7 +51,7 @@ public class AdminController {
         return new ModelAndView("manage","model", new ImagePageModel(allImages));
     }
 
-    @RequestMapping("/select-images")
+    @RequestMapping(value = "/select-images", method = RequestMethod.GET)
     ModelAndView allImages() {
         List<Image> allImages = imagesService.getAllImages();
         return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
