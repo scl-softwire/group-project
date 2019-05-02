@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/images")
 public class ImageController {
+
     private final ImagesService imagesService;
 
     @Autowired

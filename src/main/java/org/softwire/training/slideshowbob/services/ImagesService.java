@@ -4,6 +4,7 @@ import org.softwire.training.slideshowbob.models.database.Image;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ImagesService extends DatabaseService {
@@ -22,12 +23,20 @@ public class ImagesService extends DatabaseService {
         );
     }
 
-    public void deleteImage(int id) {
+        public void deleteImage(int id) {
         jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM upload_images WHERE id = :id")
                 .bind("id", id)
                 .execute()
         );
     }
+
+        public List<Image> getAllImages () {
+            return jdbi.withHandle(handle ->
+                    handle.createQuery("SELECT * FROM upload_images ")
+                    .mapToBean(Image.class)
+                    .list()
+                    );
+        }
 
 
 }
