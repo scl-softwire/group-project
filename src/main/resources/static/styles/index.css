@@ -1,5 +1,5 @@
 body {
-    font-family: 'Chewy', cursive;;
+    font-family: 'Arima Madurai', cursive;
 }
 
 .jumbotron {
@@ -18,8 +18,8 @@ body {
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
-    color: #e4bbe6;
-    text-shadow: -1px 0 #92b0d0, 0 1px #92b0d0, 1px 0 #92b0d0, 0 -1px #92b0d0;
+    color: #e68400;
+    text-shadow: -1px 0 #5c86cd, 0 1px #5c86cd, 1px 0 #5c86cd, 0 -1px #5c86cd;
 
 
     font-weight: normal;
