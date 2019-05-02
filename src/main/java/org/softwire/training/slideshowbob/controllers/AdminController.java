@@ -37,7 +37,7 @@ public class AdminController {
     @RequestMapping("/select-images")
     ModelAndView allImages() {
         List<Image> allImages = new ArrayList<>();
-        return new ModelAndView("/images", "model", new ImagePageModel(allImages));
+        return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
     }
 
 }
