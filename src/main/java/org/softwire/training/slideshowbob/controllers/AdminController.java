@@ -31,15 +31,18 @@ public class AdminController {
         return new ModelAndView("admin");
     }
 
-    @RequestMapping("/select-images")
-    ModelAndView allImages() {
-        List<Image> allImages = new ArrayList<>();
-        return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
+
+    @RequestMapping("/manage")
+    ModelAndView manage() {
+        List<Image> allImages = imagesService.getAllImages();
+        return new ModelAndView("manage","model", new ImagePageModel(allImages));
     }
 
-    @RequestMapping("/uploadImage")
-    ModelAndView uploadImage() {
-        return new ModelAndView("uploadImage");
+    @RequestMapping("/select-images")
+    ModelAndView allImages() {
+        List<Image> allImages = imagesService.getAllImages();
+        return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
+ 
     }
 
     @RequestMapping("/manage/edit") ModelAndView edit() {
@@ -54,6 +57,7 @@ public class AdminController {
         image.setUrl("https://hips.hearstapps.com/esquireuk.cdnds.net/17/08/1024x576/hd-aspect-1487849133-c2d79717-d113-442f-9165-af9685a4e404.jpg?resize=480:*");
 
         return new ModelAndView("edit", "image", image);
+
     }
 
 }

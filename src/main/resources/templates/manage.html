@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!--@thymesVar id="model" type="org.softwire.training.slideshowbob.models.pages.ImagePageModel"-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,6 +30,10 @@
         </button>
     </div>
     <div class="thumbnails"></div>
+    <div th:each="image:${model.images}">
+        <a><img class="thumbnails" th:src="${image.url}"/></a>
+        <button class="delete-image"><span>X</span></button>
+    </div>
     <div class="overlay"></div>
 
     <!-- Modal -->
@@ -40,30 +46,28 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Upload an Image:</h4>
                 </div>
+
                 <div class="modal-body">
-                    <form th:action="@{/images/image-add/added}" method="post">
-                        <label>
+                    <form th:action="@{/admin/images/image-add/added}" method="post">
+                        <label class="modal-form-field">
                             <span>Author: </span>
                             <input id="author" type="text" name="author" required>
                         </label>
-                        <label>
-                            <span>Licence: </span>
-                            <input id="license" type="text" name="license" required>
-                        </label>
-                        <label>
+                        <label class="modal-form-field">
                             <span>Image Name: </span>
                             <input id="imageName" type="text" name="imageName" required>
                         </label>
-                        <label>
+                        <label class="modal-form-field">
+                            <span>Licence: </span>
+                            <input id="license" type="text" name="license" required>
+                        </label>
+                        <label class="modal-form-field">
                             <span>Image URL: </span>
                             <input id="url" type="text" name="url" required>
                         </label>
                         <span><!-- spacer --></span>
                         <input class="center-button" type="submit" value="Upload Image" />
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
 

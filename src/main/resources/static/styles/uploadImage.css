@@ -83,3 +83,21 @@
     height: 8vw;
     padding: auto;
 }
+
+.modal-form-field {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-form-field span {
+    flex: 0 0 100px;
+    justify-content: space-between;
+}
+
+.modal-form-field input {
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: space-between;
+}

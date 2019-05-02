@@ -32,7 +32,7 @@
             </thead>
             <tbody>
             <tr th:each="image:${model.images}">
-                <td><img th:src="${image.url}" style="size: 0.75vw"></td>
+                <td><img class="thumbnails" th:src="${image.url}"></td>
                 <td th:text="${image.id + ' ' + image.author + ' ' + image.imageName}"></td>
                 <td><a></a><button class="delete-image"><span>X</span></button></td>
             </tr>
