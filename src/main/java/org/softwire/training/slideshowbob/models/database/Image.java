@@ -1,12 +1,14 @@
 package org.softwire.training.slideshowbob.models.database;
 
+import org.jdbi.v3.core.mapper.Nested;
+
 import java.time.LocalDateTime;
 
 public class Image {
     private int id;
     LocalDateTime dateTimeStamp;
     String imageName;
-    String author;
+    AdminUser author;
     String license;
     String url;
 
@@ -34,11 +36,12 @@ public class Image {
         this.imageName = imageName;
     }
 
-    public String getAuthor() {
+    @Nested("adminUser")
+    public AdminUser getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(AdminUser author) {
         this.author = author;
     }
 
