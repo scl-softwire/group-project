@@ -38,7 +38,7 @@ public class ImagesService extends DatabaseService {
                         "license = :license, " +
                         "url = :url " +
                      "WHERE id = :id")
-                .bind("timeStamp", image.getDateTimeStamp())
+                .bind("timeStamp", LocalDateTime.now())
                 .bind("imageName",image.getImageName())
                 .bind("author",image.getAuthor())
                 .bind("license",image.getLicense())
