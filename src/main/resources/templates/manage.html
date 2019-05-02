@@ -35,7 +35,7 @@
             <a><img class="thumbnail-image" th:src="${image.url}"/></a>
             <div class="overlay">
                 <a th:href="'/admin/images/image-delete/' + ${image.id}"><button class="center-button">Delete</button></a>
-                <a th:href="'/admin/manage/edit'"><button class="edit-image">Edit</button></a>
+                <a th:href="'/admin/manage/edit/' + ${image.id}"><button class="edit-image">Edit</button></a>
             </div>
         </div>
     </div>
