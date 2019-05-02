@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/admin/images")
 public class ImageController {
+
     private final ImagesService imagesService;
 
     @Autowired
@@ -22,8 +23,7 @@ public class ImageController {
 
         imagesService.uploadImage(image);
 
-        // TODO: add the real redirect URL
-        return new RedirectView("TODO");
+        return new RedirectView("/uploadImage");
     }
 
     @RequestMapping("/image-delete/{id}")

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Group Project - Home</title>
+
+
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/uploadImage.css"/>
+
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar">
+    <!-- This element is replaced by the HTML in fragments/navbar.html -->
+</div>
+
+<div class="main-content">
+    <h1 id="all-photographs">All Photographs</h1>
+    <div class="uploadImage">
+        <button type="button" class="uploadImageButton" data-toggle="modal" data-target="#myModal">
+            <img class="uploadImageButtonImage" alt="upload icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbMnLmCcifVdReL3JQny4hNf-sAr-IpiSnFA4jmraUCqeV4v07"/>
+        </button>
+    </div>
+    <div class="thumbnails"></div>
+    <div class="overlay"></div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload an Image:</h4>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/images/image-add/added}" method="post">
+                        <label>
+                            <span>Author: </span>
+                            <input id="author" type="text" name="author" required>
+                        </label>
+                        <label>
+                            <span>Licence: </span>
+                            <input id="license" type="text" name="license" required>
+                        </label>
+                        <label>
+                            <span>Image Name: </span>
+                            <input id="imageName" type="text" name="imageName" required>
+                        </label>
+                        <label>
+                            <span>Image URL: </span>
+                            <input id="url" type="text" name="url" required>
+                        </label>
+                        <span><!-- spacer --></span>
+                        <input class="center-button" type="submit" value="Upload Image" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
