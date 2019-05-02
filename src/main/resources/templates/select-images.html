@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--@thymesVar id="model" type="org.softwire.training.slideshowbob.models.pages.ImagePageModel"-->
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Group Project - Select Photos</title>
+    <link rel="shortcut icon" href="/images/slide2.png"/>
+
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/index.css"/>
 </head>
+
 <body>
 
+<div th:replace="fragments/navbar :: navbar">
+    <!-- This element is replaced by the HTML in fragments/navbar.html -->
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Select Photos</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Information</th>
+                <th>Delete Image</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="image:${model.images}">
+                <td th:text="${image.id + ' ' + image.author + ' ' + image.imageName + ' ' + image.url}"></td>
+                <td><a></a><button class="delete-image"><span>X</span></button></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 </body>
+
+
 </html>
