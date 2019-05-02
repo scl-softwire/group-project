@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -18,7 +19,7 @@ public class ImageController {
     @Autowired
     public ImageController (ImagesService imagesService) {this.imagesService = imagesService;}
 
-    @RequestMapping("/image-add/added")
+    @RequestMapping(value = "/added", method = RequestMethod.POST)
     RedirectView uploadImage(@ModelAttribute Image image) {
 
         imagesService.uploadImage(image);
@@ -26,7 +27,7 @@ public class ImageController {
         return new RedirectView("/uploadImage");
     }
 
-    @RequestMapping("/image-delete/{id}")
+    @RequestMapping(value = "/image-delete/{id}", method = RequestMethod.POST)
     RedirectView deleteImage(@PathVariable("id") Integer imageId) {
 
         imagesService.deleteImage(imageId);
@@ -34,9 +35,10 @@ public class ImageController {
         return new RedirectView("/images");
     }
 
-    @RequestMapping("/image-edit/edited")
+    @RequestMapping(value = "/image-edit/edited", method = RequestMethod.POST)
     RedirectView editImage(@ModelAttribute Image image) {
         imagesService.editImage(image);
         return new RedirectView("/admin/manage/edit");
     }
+
 }

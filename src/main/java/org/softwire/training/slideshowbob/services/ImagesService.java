@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ImagesService extends DatabaseService {
@@ -59,4 +60,11 @@ public class ImagesService extends DatabaseService {
     }
 
 
+    public Optional<Image> getSingleImage(int id) {
+        return jdbi.withHandle(handle -> handle.createQuery("SELECT * FROM upload_images WHERE id = :id")
+            .bind("id", id)
+                .mapToBean(Image.class)
+                .findFirst()
+        );
+    }
 }
