@@ -38,7 +38,7 @@ public class AdminController {
 
 
     @RequestMapping(value = "/select-images", method = RequestMethod.POST)
-    RedirectView createSlideshow(@ModelAttribute Slideshow slideshow, List<Image> images) {
+    RedirectView createSlideshow(@ModelAttribute Slideshow slideshow, @ModelAttribute List<Image> images) {
 
         slideshowService.createSlideshow(slideshow,images);
 

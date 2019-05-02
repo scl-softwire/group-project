@@ -3,6 +3,7 @@ package org.softwire.training.slideshowbob.services;
 import org.jdbi.v3.core.statement.PreparedBatch;
 import org.softwire.training.slideshowbob.models.database.Image;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
+import org.softwire.training.slideshowbob.models.database.SlideshowSlide;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,19 +32,24 @@ public class SlideshowService extends DatabaseService {
         });
     }
 
-//    // TODO return working slideshow - MAP TO Slideshow
-//    public Slideshow getSlideshow(int id) {
-//        return jdbi.useHandle(handle -> handle.createUpdate("SELECT * FROM `slideshows` WHERE id = :id")
-//                .bind("id", id)
-//                .execute());
-//    }
-//
-//    // TODO return all images for a slideshow mapped to a SlideshowSlide class
-//    public List<SlideshowSlide> getImagesforSlideshow(Slideshow slideshow){
-//        return jdbi.useHandle(handle -> handle.createUpdate("SELECT * FROM `slideshow_slides` WHERE slideshow_id = :id")
-//                .bind("id", slideshow.getId())
-//                .execute());
-//    }
+    public List<SlideshowSlide> getImagesforSlideshow(int id){
+        return jdbi.withHandle(handle -> handle.createQuery(
+                "SELECT slideshow_slides.slideshow_id, slideshow_slides.slide_id, slideshow_slides.order, " +
+                        "slideshows.id AS slideshow_id, slideshows.author_id AS slideshow_id, " +
+                        "upload_images.id AS image_id, " +
+                            "upload_images.date_time_stamp AS image_date_time_stamp, " +
+                            "upload_images.image_name AS image_image_name, " +
+                            "upload_images.author AS image_author, " +
+                            "upload_images.license AS image_license, " +
+                            "upload_images.url AS image_url " +
+                        "FROM slideshow_slides " +
+                            "INNER JOIN slideshows ON slideshow_slides.slideshow_id = slideshows.id " +
+                            "INNER JOIN upload_images ON slideshow_slides.id = upload_images.id " +
+                        "WHERE slideshow_id = :id")
+                .bind("id", id)
+                .mapToBean(SlideshowSlide.class)
+                .list());
+    }
 
     public void deleteSlideshow(int id) {
         jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshow-slides " +

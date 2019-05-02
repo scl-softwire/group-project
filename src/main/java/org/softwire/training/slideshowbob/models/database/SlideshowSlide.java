@@ -1,24 +1,29 @@
 package org.softwire.training.slideshowbob.models.database;
 
+import org.jdbi.v3.core.mapper.Nested;
+
 public class SlideshowSlide {
 
-    private Slideshow slideshowId;
-    private Image slideId;
+    private int slideshowId;
+    private int slideId;
     private int order;
 
-    public Slideshow getSlideshowId() {
+    private Slideshow slideshow;
+    private Image slide;
+
+    public int getSlideshowId() {
         return slideshowId;
     }
 
-    public void setSlideshowId(Slideshow slideshowId) {
+    public void setSlideshowId(int slideshowId) {
         this.slideshowId = slideshowId;
     }
 
-    public Image getSlideId() {
+    public int getSlideId() {
         return slideId;
     }
 
-    public void setSlideId(Image slideId) {
+    public void setSlideId(int slideId) {
         this.slideId = slideId;
     }
 
@@ -28,5 +33,23 @@ public class SlideshowSlide {
 
     public void setOrder(int order) {
         this.order = order;
+    }
+
+    @Nested("slideshow")
+    public Slideshow getSlideshow() {
+        return slideshow;
+    }
+
+    public void setSlideshow(Slideshow slideshow) {
+        this.slideshow = slideshow;
+    }
+
+    @Nested("slide")
+    public Image getSlide() {
+        return slide;
+    }
+
+    public void setSlide(Image slide) {
+        this.slide = slide;
     }
 }

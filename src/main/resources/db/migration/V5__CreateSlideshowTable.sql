@@ -12,9 +12,9 @@ CREATE TABLE `slideshow_slides`
   `order` int
 );
 
-ALTER TABLE `upload_images` MODIFY COLUMN `author` int;
+ALTER TABLE `upload_images` ADD COLUMN `author_id` int;
 
-ALTER TABLE `upload_images` ADD FOREIGN KEY (`author`) REFERENCES `admins` (`id`);
+ALTER TABLE `upload_images` ADD FOREIGN KEY (`author_id`) REFERENCES `admins` (`id`);
 
 ALTER TABLE `slideshows` ADD FOREIGN KEY (`author_id`) REFERENCES `admins` (`id`);
 
