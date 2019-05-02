@@ -15,7 +15,7 @@ public class ImagesService extends DatabaseService {
                 "VALUES (:timestamp, :imageName, : :author, :license, :url)")
                 .bind("timestamp", LocalDateTime.now())
                 .bind("imageName", image.getImageName())
-                .bind("author", image.getAuthor().getId())
+                .bind("author", image.getAuthor())
                 .bind("license", image.getLicense())
                 .bind("url", image.getUrl())
                 .execute()
