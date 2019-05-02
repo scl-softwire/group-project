@@ -6,8 +6,7 @@ nav {
     flex-direction: row;
     align-items: baseline;
 
-    background-color: #92b0d0;
-    /*background-image: linear-gradient(to right, #92b0d0, #92b0d0, #92b0d0, #e4bbe6);*/
+    background-color: #5c86cd;
     padding: 5px 0;
 }
 
@@ -15,12 +14,12 @@ nav {
     margin: 0 5px 0 20px;
     font-size: 30px;
     color: white;
-    text-shadow: -1px 0 #e4bbe6, 0 1px #e4bbe6, 1px 0 #e4bbe6, 0 -1px #e4bbe6;
+    text-shadow: -1px 0 #e68400, 0 1px #e68400, 1px 0 #e68400, 0 -1px #e68400;
 
 }
 .navbar-title:hover {
-    color: #fde0ff;
-    text-shadow: -1px 0 #e4bbe6, 0 1px #e4bbe6, 1px 0 #e4bbe6, 0 -1px #e4bbe6;
+    color: white;
+    text-shadow: -1px 0 #e64e18, 0 1px #e64e18, 1px 0 #e64e18, 0 -1px #e64e18;
 }
 
 .navbar-title a {
