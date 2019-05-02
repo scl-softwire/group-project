@@ -8,7 +8,7 @@ public class Image {
     private int id;
     LocalDateTime dateTimeStamp;
     String imageName;
-    AdminUser author;
+    String author;
     String license;
     String url;
 
@@ -36,12 +36,11 @@ public class Image {
         this.imageName = imageName;
     }
 
-    @Nested("adminUser")
-    public AdminUser getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(AdminUser author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

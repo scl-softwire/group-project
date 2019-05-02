@@ -41,13 +41,13 @@ public class SlideshowService extends DatabaseService {
 //                .execute());
 //    }
 
-    public void deleteSlidesgow(int id) {
-        jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshows " +
-                "WHERE id = :id").bind("id", id)
-                .execute());
+    public void deleteSlideshow(int id) {
         jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshow-slides " +
                 "WHERE slideshow_id = :slideshow_id")
                 .bind("slideshow_id", id)
+                .execute());
+        jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshows " +
+                "WHERE id = :id").bind("id", id)
                 .execute());
     }
 }
