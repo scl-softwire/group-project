@@ -29,5 +29,22 @@ public class ImagesService extends DatabaseService {
         );
     }
 
+    public void editImage(Image image) {
+        jdbi.useHandle(handle -> handle.createUpdate(
+                "UPDATE upload_images " +
+                     "SET date_time_stamp = :timeStamp, " +
+                        "image_name = :imageName, " +
+                        "author = :author, " +
+                        "license = :license, " +
+                        "url = :url " +
+                     "WHERE id = :id")
+                .bind("timeStamp", image.getDateTimeStamp())
+                .bind("imageName",image.getImageName())
+                .bind("author",image.getAuthor())
+                .bind("license",image.getLicense())
+                .bind("url", image.getUrl())
+                .execute()
+        );
+    }
 
 }
