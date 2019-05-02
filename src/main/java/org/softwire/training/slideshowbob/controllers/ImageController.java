@@ -36,10 +36,7 @@ public class ImageController {
 
     @RequestMapping("/image-edit/edited")
     RedirectView editImage(@ModelAttribute Image image) {
-
         imagesService.editImage(image);
-
-        // TODO: add the real redirst URL
-        return new RedirectView("TODO");
+        return new RedirectView("/admin/manage/edit");
     }
 }
