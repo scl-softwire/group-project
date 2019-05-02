@@ -30,13 +30,33 @@ public class ImagesService extends DatabaseService {
         );
     }
 
-        public List<Image> getAllImages () {
-            return jdbi.withHandle(handle ->
-                    handle.createQuery("SELECT * FROM upload_images ")
-                    .mapToBean(Image.class)
-                    .list()
-                    );
-        }
+
+    public void editImage(Image image) {
+        jdbi.useHandle(handle -> handle.createUpdate(
+                "UPDATE upload_images " +
+                     "SET date_time_stamp = :timeStamp, " +
+                        "image_name = :imageName, " +
+                        "author = :author, " +
+                        "license = :license, " +
+                        "url = :url " +
+                     "WHERE id = :id")
+                .bind("id", image.getId())
+                .bind("timeStamp", LocalDateTime.now())
+                .bind("imageName",image.getImageName())
+                .bind("author",image.getAuthor())
+                .bind("license",image.getLicense())
+                .bind("url", image.getUrl())
+                .execute()
+        );
+    }
+
+    public List<Image> getAllImages () {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM upload_images ")
+                .mapToBean(Image.class)
+                .list()
+                );
+    }
 
 
 }
