@@ -22,7 +22,7 @@ public class ImageController {
 
         imagesService.uploadImage(image);
 
-        return new RedirectView("/uploadImage");
+        return new RedirectView("admin/manage");
     }
 
     @RequestMapping("/image-delete/{id}")
