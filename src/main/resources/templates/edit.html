@@ -29,7 +29,7 @@
         <form class="formdetails" th:action="@{/admin/images/image-edit/edited}" method="post">
             <label for="id">
                 <span>ID</span>
-                <input id="id" name="id" th:value="${image.id}" disabled/>
+                <input id="id" name="id" th:value="${image.id}" readonly/>
             </label>
             <label for="dateTimeStamp">
                 <span>Last Edited</span>

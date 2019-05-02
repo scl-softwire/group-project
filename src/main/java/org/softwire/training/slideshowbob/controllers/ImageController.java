@@ -24,7 +24,7 @@ public class ImageController {
 
         imagesService.uploadImage(image);
 
-        return new RedirectView("/uploadImage");
+        return new RedirectView("/admin/manage");
     }
 
     @RequestMapping(value = "/image-delete/{id}", method = RequestMethod.POST)
@@ -38,7 +38,7 @@ public class ImageController {
     @RequestMapping(value = "/image-edit/edited", method = RequestMethod.POST)
     RedirectView editImage(@ModelAttribute Image image) {
         imagesService.editImage(image);
-        return new RedirectView("/admin/manage/edit");
+        return new RedirectView("/admin/manage/edit/" + image.getId());
     }
 
 }

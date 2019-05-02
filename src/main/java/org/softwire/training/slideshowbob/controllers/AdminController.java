@@ -34,15 +34,18 @@ public class AdminController {
         return new ModelAndView("admin");
     }
 
-    @RequestMapping("/select-images")
-    ModelAndView allImages() {
-        List<Image> allImages = new ArrayList<>();
-        return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
+
+    @RequestMapping("/manage")
+    ModelAndView manage() {
+        List<Image> allImages = imagesService.getAllImages();
+        return new ModelAndView("manage","model", new ImagePageModel(allImages));
     }
 
-    @RequestMapping("/uploadImage")
-    ModelAndView uploadImage() {
-        return new ModelAndView("uploadImage");
+    @RequestMapping("/select-images")
+    ModelAndView allImages() {
+        List<Image> allImages = imagesService.getAllImages();
+        return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
+ 
     }
 
     @RequestMapping("/manage/edit/{id}") ModelAndView edit(@PathVariable("id") Integer id) throws Exception {
@@ -57,7 +60,6 @@ public class AdminController {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     private static class ImageNotFoundException extends Exception {
-
         private ImageNotFoundException(Integer id) {
             super("Image with id " + id + " + was not found");
         }
