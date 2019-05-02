@@ -39,7 +39,7 @@
 }
 
 .thumbnail-image-div {
-    background-color: lavenderblush;
+    background-color: #e8f0ff;
     border: 1px solid #ddd;
     border-radius: 20px;
 
@@ -74,7 +74,7 @@
     vertical-align: middle;
 }
 .main-content{
-    width: 50%;
+    width: 80%;
     text-align: center;
 }
 
