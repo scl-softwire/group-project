@@ -32,7 +32,7 @@ public class ImageController {
 
         imagesService.deleteImage(imageId);
 
-        return new RedirectView("/images");
+        return new RedirectView("/admin/manage");
     }
 
     @RequestMapping(value = "/image-edit/edited", method = RequestMethod.POST)
