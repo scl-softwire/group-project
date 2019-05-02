@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable(); // disable csrf for our requests.
+
         http.exceptionHandling().accessDeniedPage("/");
         http.apply(new JwtTokenFilterConfigurer(tokenAuthenticationService));
     }

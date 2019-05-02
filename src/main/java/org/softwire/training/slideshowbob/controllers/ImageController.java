@@ -21,7 +21,6 @@ public class ImageController {
 
         imagesService.uploadImage(image);
 
-        // TODO: add the real redirect URL
-        return new RedirectView("TODO");
+        return new RedirectView("/uploadImage");
     }
 }
