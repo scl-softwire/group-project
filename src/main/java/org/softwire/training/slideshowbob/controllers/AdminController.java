@@ -3,6 +3,7 @@ package org.softwire.training.slideshowbob.controllers;
 import org.softwire.training.slideshowbob.models.database.Image;
 import org.softwire.training.slideshowbob.models.pages.ImagePageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
+import org.softwire.training.slideshowbob.services.auth.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +17,16 @@ import java.util.List;
 public class AdminController {
 
     private final ImagesService imagesService;
+    private final AuthService authService;
 
     @Autowired
-    public AdminController (ImagesService imagesService) {
+    public AdminController(ImagesService imagesService, AuthService authService) {
         this.imagesService = imagesService;
+        this.authService = authService;
     }
 
     // TODO - add service
+
 
     @RequestMapping("")
     ModelAndView admin() {
