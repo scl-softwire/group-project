@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Group Project - Home</title>
 
-
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/uploadImage.css"/>
@@ -34,8 +34,8 @@
         <div class="thumbnail-image-div" th:each="image:${model.images}">
             <a><img class="thumbnail-image" th:src="${image.url}"/></a>
             <div class="overlay">
-                <a th:href="'/admin/images/image-delete/' + ${image.id}"><button class="center-button">Delete</button></a>
-                <a th:href="'/admin/manage/edit/' + ${image.id}"><button class="edit-image">Edit</button></a>
+                <a th:href="'/admin/images/image-delete/' + ${image.id}"><button class="imagebuttons">Delete</button></a>
+                <a th:href="'/admin/manage/edit/' + ${image.id}"><button class="imagebuttons">Edit</button></a>
             </div>
         </div>
     </div>
