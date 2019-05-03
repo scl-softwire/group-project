@@ -5,9 +5,10 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    justify-content: space-between;
 
     background-color: #5c86cd;
-    padding: 5px 0;
+    padding: 5px 12px;
 }
 
 .navbar-title {
@@ -27,4 +28,25 @@ nav {
     text-decoration: none;
 }
 
+.navbar-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
+.navbar-item {
+    margin: 0 5px 0 20px;
+    font-size: 20px;
+    color: white;
+    text-shadow: -1px 0 #e68400, 0 1px #e68400, 1px 0 #e68400, 0 -1px #e68400;
+}
+
+.navbar-item a {
+    color: unset;
+    text-decoration: none;
+}
+
+.navbar-item:hover {
+    color: white;
+    text-shadow: -1px 0 #e64e18, 0 1px #e64e18, 1px 0 #e64e18, 0 -1px #e64e18;
+}
