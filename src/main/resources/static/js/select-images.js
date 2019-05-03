@@ -74,15 +74,17 @@ function closeAllSelect(elmnt) {
     }
 }
 
-function addItemToList() {
+function addItemToSlideshowList() {
     // Get the details of the selected item
     var selectedItem = document.getElementsByClassName('selected')[0];
-    $('#selections').append(`
-        <li>
-            <img class="image-list-thumbnail" src="${selectedItem.getAttribute('data-url')}"/>
-            ${selectedItem.getAttribute('data-name')}
-        </li>   
-    `);
+    $('#selections').append(`<li> <img class="image-list-thumbnail" src="${selectedItem.getAttribute('data-url')}"/>
+    ${selectedItem.getAttribute('data-name')}</li>`);
+}
+
+function removeItemFromImageList() {
+    // Remove image from list of all items if added to slideshow list
+
+
 }
 
 document.addEventListener("click", closeAllSelect);
