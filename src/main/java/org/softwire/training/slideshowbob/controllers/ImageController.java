@@ -40,7 +40,7 @@ public class ImageController {
     @RequestMapping(value = "/image-edit/edited", method = RequestMethod.POST)
     RedirectView editImage(@ModelAttribute Image image) {
         imagesService.editImage(image);
-        return new RedirectView("/admin/manage/edit/" + image.getId());
+        return new RedirectView("/admin/manage");
     }
 
 }

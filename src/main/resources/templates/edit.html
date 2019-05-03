@@ -5,7 +5,7 @@
 
 <head>
     <title>Slideshow Bob - Edit Photo</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
@@ -21,38 +21,38 @@
 
 <div class="main-content">
     <h1 class="page-title">Edit Photo</h1>
-</div>
 
-<div class="imagedetails">
-    <img th:src="${image.url}">
-    <div>
-        <form class="formdetails" th:action="@{/admin/images/image-edit/edited}" method="post">
-            <label for="id">
-                <span>ID</span>
-                <input id="id" name="id" th:value="${image.id}" readonly/>
-            </label>
-            <label for="dateTimeStamp">
-                <span>Last Edited</span>
-                <input id="dateTimeStamp" name="dateTimeStamp" th:value="${image.dateTimeStamp}" disabled/>
-            </label>
-            <label for="author">
-                <span>Image Author</span>
-                <input id="author" name="author" th:value="${image.author}"/>
-            </label>
-            <label for="imageName">
-                <span>Image Name</span>
-                <input id="imageName" name="imageName" th:value="${image.imageName}"/>
-            </label>
-            <label for="license">
-                <span>Image License</span>
-                <input id="license" name="license" th:value="${image.license}"/>
-            </label>
-            <label for="url">
-                <span>URL</span>
-                <input id="url" name="url" th:value="${image.url}"/>
-            </label>
-            <input class="savebutton" type="submit" value="Save!"></button>
-        </form>
+    <div class="imagedetails">
+        <img th:src="${image.url}">
+        <div>
+            <form class="formdetails" th:action="@{/admin/images/image-edit/edited}" method="post">
+                <label for="id">
+                    <span>ID</span>
+                    <input id="id" name="id" th:value="${image.id}" readonly/>
+                </label>
+                <label for="dateTimeStamp">
+                    <span>Last Edited</span>
+                    <input id="dateTimeStamp" name="dateTimeStamp" th:value="${image.dateTimeStamp}" disabled/>
+                </label>
+                <label for="author">
+                    <span>Image Author</span>
+                    <input id="author" name="author" th:value="${image.author}"/>
+                </label>
+                <label for="imageName">
+                    <span>Image Name</span>
+                    <input id="imageName" name="imageName" th:value="${image.imageName}"/>
+                </label>
+                <label for="license">
+                    <span>Image License</span>
+                    <input id="license" name="license" th:value="${image.license}"/>
+                </label>
+                <label for="url">
+                    <span>URL</span>
+                    <input id="url" name="url" th:value="${image.url}"/>
+                </label>
+                <input class="savebutton" type="submit" value="Save!">
+            </form>
+        </div>
     </div>
 </div>
 
