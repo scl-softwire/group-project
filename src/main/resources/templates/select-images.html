@@ -32,7 +32,7 @@
                 <div class="custom-select" style="width:200px;">
                     <select>
                         <option value="0">Select an image:</option>
-                        <option th:each="image:${model.images}" data-th-attr="data-url=${image.url}"
+                        <option th:each="image:${model.images}" data-th-attr="data-url=${image.url}, data-name=${image.imageName}"
                                 th:text="${image.imageName}"></option>
                     </select>
                 </div>

@@ -25,7 +25,9 @@ function createDropdown() {
                 s = this.parentNode.parentNode.getElementsByTagName("select")[0];
                 h = this.parentNode.previousSibling;
                 for (i = 0; i < s.length; i++) {
-                    if (s.options[i].innerHTML == this.innerHTML) {
+                    s.options[i].removeAttribute('class');
+                    if (s.options[i].innerHTML === this.innerHTML) {
+                        s.options[i].setAttribute('class', 'selected');
                         s.selectedIndex = i;
                         h.innerHTML = this.innerHTML;
                         y = this.parentNode.getElementsByClassName("same-as-selected");
@@ -74,8 +76,12 @@ function closeAllSelect(elmnt) {
 
 function addItemToList() {
     // Get the details of the selected item
+    var selectedItem = document.getElementsByClassName('selected')[0];
     $('#selections').append(`
-        <li>Some text</li>   
+        <li>
+            <img class="image-list-thumbnail" src="${selectedItem.getAttribute('data-url')}"/>
+            ${selectedItem.getAttribute('data-name')}
+        </li>   
     `);
 }
 
