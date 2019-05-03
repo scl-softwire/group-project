@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/styles/dropdown.css"/>
     <link rel="stylesheet" href="/styles/select-images.css"/>
 
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="/js/select-images.js"></script>
 </head>
 
 <body>
@@ -21,25 +23,31 @@
     <!-- This element is replaced by the HTML in fragments/navbar.html -->
 </div>
 
-<div class="container">
-    <div class="jumbotron">
-        <h1>Select Photos</h1>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Select Photos</h1>
 
+            <div class="display-container">
 
-        <div class="custom-select" style="width:200px;">
-            <select>
-                <option value="0">Select an image:</option>
-                <option th:each="image:${model.images}" th:text="${image.imageName}"></option>
-            </select>
+                <div class="custom-select" style="width:200px;">
+                    <select>
+                        <option value="0">Select an image:</option>
+                        <option th:each="image:${model.images}" data-th-attr="data-url=${image.url}"
+                                th:text="${image.imageName}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" onclick="addItemToList()">Add to list</button>
+
+                <div class="selected-images-list">
+                    <ol id="selections">
+                    </ol>
+                </div>
+
+            </div>
+
         </div>
-
-        <button type="submit">Add to list</button>
-
-
     </div>
-</div>
-
-<script src="/js/select-images.js"></script>
 
 </body>
 
