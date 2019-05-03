@@ -12,7 +12,7 @@
 
         <ul class='slideshow'>
             <li th:each="imageUrl, iter : ${model}">
-                <span th:style="'background-image: url(' + ${imageUrl} + '); animation-delay: ' + ${iter.index * 6} + 's; -webkit-animation-delay: ' + ${iter.index * 6} + 's; -moz-animation-delay: ' + ${iter.index * 6} + 's;'"></span>
+                <span th:style="'background-image: url(' + ${imageUrl} + '); animation: imageAnimation ' + ${model.size() * 6} + 's linear infinite ' + ${iter.index * 6} + 's; -webkit-animation: imageAnimation ' + ${model.size() * 6} + 's linear infinite ' + ${iter.index * 6} + 's; -moz-animation: imageAnimation ' + ${model.size() * 6} + 's linear infinite ' + ${iter.index * 6} + 's;'"></span>
             </li>
         </ul>
 

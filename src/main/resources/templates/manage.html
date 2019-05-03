@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Group Project - Home</title>
 
-
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/uploadImage.css"/>
@@ -24,17 +24,21 @@
 
 <div class="main-content">
     <h1 id="all-photographs">All Photographs</h1>
-    <div class="uploadImage">
-        <button type="button" class="uploadImageButton" data-toggle="modal" data-target="#myModal">
-            <img class="uploadImageButtonImage" alt="upload icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbMnLmCcifVdReL3JQny4hNf-sAr-IpiSnFA4jmraUCqeV4v07"/>
-        </button>
+    <div class="thumbnail-image-div">
+        <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#myModal">
+            <img class="thumbnail-image" alt="upload icon"
+                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbMnLmCcifVdReL3JQny4hNf-sAr-IpiSnFA4jmraUCqeV4v07"/>
+        </a>
     </div>
-    <div class="thumbnails"></div>
-    <div th:each="image:${model.images}">
-        <a><img class="thumbnails" th:src="${image.url}"/></a>
-        <button class="delete-image"><span>X</span></button>
+    <div class="thumbnails">
+        <div class="thumbnail-image-div" th:each="image:${model.images}">
+            <a><img class="thumbnail-image" th:src="${image.url}"/></a>
+            <div class="overlay">
+                <a th:href="'/admin/images/image-delete/' + ${image.id}"><button class="imagebuttons">Delete</button></a>
+                <a th:href="'/admin/manage/edit/' + ${image.id}"><button class="imagebuttons">Edit</button></a>
+            </div>
+        </div>
     </div>
-    <div class="overlay"></div>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -66,7 +70,7 @@
                             <input id="url" type="text" name="url" required>
                         </label>
                         <span><!-- spacer --></span>
-                        <input class="center-button" type="submit" value="Upload Image" />
+                        <input class="center-button" type="submit" value="Upload Image"/>
                     </form>
                 </div>
             </div>

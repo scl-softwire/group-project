@@ -17,7 +17,9 @@ public class ImageController {
     private final ImagesService imagesService;
 
     @Autowired
-    public ImageController (ImagesService imagesService) {this.imagesService = imagesService;}
+    public ImageController (ImagesService imagesService) {
+        this.imagesService = imagesService;
+    }
 
     @RequestMapping(value = "/added", method = RequestMethod.POST)
     RedirectView uploadImage(@ModelAttribute Image image) {
@@ -32,7 +34,7 @@ public class ImageController {
 
         imagesService.deleteImage(imageId);
 
-        return new RedirectView("/images");
+        return new RedirectView("/admin/manage");
     }
 
     @RequestMapping(value = "/image-edit/edited", method = RequestMethod.POST)
