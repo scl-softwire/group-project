@@ -25,71 +25,10 @@ body {
     z-index: 0;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-}
 
-@-webkit-keyframes imageAnimation {
-    0% {
-        opacity: 0;
-        -webkit-animation-timing-function: ease-in;
-    }
-    12.5% {
-        opacity: 1;
-        -webkit-animation-timing-function: ease-out;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@-moz-keyframes imageAnimation {
-    0% {
-        opacity: 0;
-        -moz-animation-timing-function: ease-in;
-    }
-    12.5% {
-        opacity: 1;
-        -moz-animation-timing-function: ease-out;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@keyframes imageAnimation {
-    0% {
-        opacity: 0;
-        -webkit-animation-timing-function: ease-in;
-        -moz-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-    12.5% {
-        opacity: 1;
-        -webkit-animation-timing-function: ease-out;
-        -moz-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-.no-cssanimations .slideshow li span {
-    opacity: 1;
+    transition: opacity 3s ease-in-out;
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
 }
 
 .fullscreenbutton {
