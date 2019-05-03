@@ -12,10 +12,9 @@
     -webkit-transition: transform 1s;
 }
 
-.thumbnail-image-div:hover .overlay {
-    display: block;
-    transform: scale(2);
-    -webkit-transform: scale(2);
+.imagebuttons {
+    transform: scale(1);
+    -webkit-transform: scale(1);
     transition: transform 1s;
     -webkit-transition: transform 1s;
 }
@@ -57,12 +56,6 @@
 }
 
 
-.overlay {
-    display: none;
-    font-size: 0.3vw;
-    word-wrap: break-word;
-    width: 10vw;
-}
 .uploadImage {
     width: 10vw;
     height: 10vw;
@@ -108,12 +101,4 @@
     flex-shrink: 1;
     justify-content: space-between;
 }
-.delete-image{
-    width: 2vw;
-    height: 1vw;
-}
 
-.edit-image{
-    width: 2vw;
-    height: 1vw;
-}
