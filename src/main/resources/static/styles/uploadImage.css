@@ -100,8 +100,7 @@ body {
     transition: transform 1s;
     -webkit-transition: transform 1s;
 }
-button {
-    padding: 5px; !important;
-    color: black;; !important;
+.imagebuttons{
+    color: black;
 }
 
