@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
+    <link rel="stylesheet" href="/styles/dropdown.css"/>
+    <link rel="stylesheet" href="/styles/select-images.css"/>
+
+    <script src="/js/select-images.js"></script>
+
 </head>
 
 <body>
@@ -22,25 +27,20 @@
     <div class="jumbotron">
         <h1>Select Photos</h1>
 
-        <table>
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Information</th>
-                <th>Delete Image</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="image:${model.images}">
-                <td><img class="thumbnails" th:src="${image.url}"></td>
-                <td th:text="${image.id + ' ' + image.author + ' ' + image.imageName}"></td>
-                <td><a></a><button class="delete-image"><span>X</span></button></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a th:each="image:${model.images}" class="list-item" th:text="${image.imageName}"></a>
+            </div>
+        </div>
+
+        <select name="sometext" multiple="multiple">
+            <option th:each="image:${model.images}" class="list-item" th:text="${image.imageName}"></option>
+        </select>
 
     </div>
 </div>
+
 
 </body>
 

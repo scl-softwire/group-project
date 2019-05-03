@@ -1,67 +1,40 @@
-.dropdown dd,
-.dropdown dt {
-    margin: 0px;
-    padding: 0px;
-}
-
-.dropdown ul {
-    margin: -1px 0 0 0;
-}
-
-.dropdown dd {
-    position: relative;
-}
-
-.dropdown a,
-.dropdown a:visited {
-    color: #fff;
-    text-decoration: none;
-    outline: none;
-    font-size: 12px;
-}
-
-.dropdown dt a {
-    background-color: #d3d3d3;
-    display: block;
-    padding: 8px 20px 5px 10px;
-    min-height: 25px;
-    line-height: 25px;
-    overflow: hidden;
-    border: 0;
-    width: 272px;
-}
-
-.dropdown dt a span,
-.multiSel span {
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
     cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    position: relative;
     display: inline-block;
-    padding: 0 3px 2px 0;
 }
 
-.dropdown dd ul {
-    background-color: #bdbdbd;
-    border: 0;
-    color: #fff;
-    display: none;
-    left: 0px;
-    padding: 2px 15px 2px 5px;
-    position: absolute;
-    top: 2px;
-    width: 280px;
-    list-style: none;
-    height: 100px;
-    overflow: auto;
-}
-
-.dropdown span.value {
-    display: none;
-}
-
-.dropdown dd ul li a {
-    padding: 5px;
+.dropdown-content.show {
     display: block;
 }
 
-.dropdown dd ul li a:hover {
-    background-color: #fff;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
