@@ -5,13 +5,16 @@ import org.softwire.training.slideshowbob.models.pages.ImagePageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
 import org.softwire.training.slideshowbob.services.auth.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -45,19 +48,21 @@ public class AdminController {
  
     }
 
-    @RequestMapping("/manage/edit") ModelAndView edit() {
-        // TODO: Get image from DB
+    @RequestMapping("/manage/edit/{id}") ModelAndView edit(@PathVariable("id") Integer id) throws Exception {
+        Optional<Image> image = imagesService.getSingleImage(id);
+        if (image.isPresent()) {
+            return new ModelAndView("edit", "image", image.get());
+        } else {
+            throw new ImageNotFoundException(id);
+        }
+    }
 
-        Image image = new Image();
-        image.setId(1);
-        image.setAuthor("Joel");
-        image.setImageName("G");
-        image.setLicense("Asdf");
-        image.setDateTimeStamp(LocalDateTime.now());
-        image.setUrl("https://hips.hearstapps.com/esquireuk.cdnds.net/17/08/1024x576/hd-aspect-1487849133-c2d79717-d113-442f-9165-af9685a4e404.jpg?resize=480:*");
 
-        return new ModelAndView("edit", "image", image);
-
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    private static class ImageNotFoundException extends Exception {
+        private ImageNotFoundException(Integer id) {
+            super("Image with id " + id + " + was not found");
+        }
     }
 
 }

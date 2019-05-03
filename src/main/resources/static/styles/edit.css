@@ -1,7 +1,13 @@
 .imagedetails {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     max-width: 800px;
+}
+
+.imagedetails img {
+    max-width: 50%;
+    object-fit: contain;
 }
 
 .formdetails {
