@@ -18,7 +18,7 @@ nav {
 
 }
 .navbar-title:hover {
-    color: #fde0ff;
+    color: white;
     text-shadow: -1px 0 #e64e18, 0 1px #e64e18, 1px 0 #e64e18, 0 -1px #e64e18;
 }
 

@@ -1,0 +1,22 @@
+.imagedetails {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 800px;
+}
+
+.imagedetails img {
+    max-width: 50%;
+    object-fit: contain;
+}
+
+.formdetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 10px;
+}
+
+.savebutton {
+
+}
