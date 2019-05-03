@@ -38,9 +38,9 @@ public class AdminController {
 
 
     @RequestMapping(value = "/select-images", method = RequestMethod.POST)
-    RedirectView createSlideshow(@ModelAttribute Slideshow slideshow, @ModelAttribute List<Image> images) {
+    RedirectView createSlideshow(@ModelAttribute Slideshow slideshow, @ModelAttribute List<Integer> imagesIds) {
 
-        slideshowService.createSlideshow(slideshow,images);
+        slideshowService.createSlideshow(slideshow,imagesIds);
 
         return new RedirectView("/admin");
     }
@@ -72,5 +72,7 @@ public class AdminController {
             super("Image with id " + id + " + was not found");
         }
     }
+
+
 
 }

@@ -11,13 +11,14 @@ import java.util.List;
 @Service
 public class SlideshowService extends DatabaseService {
 
-    public void createSlideshow(Slideshow slideshow, List<Image> images) {
+    public void createSlideshow(Slideshow slideshow, List<Integer> imagesIds) {
         // Create Slideshow in Slideshow Table
 
         jdbi.useHandle(handle -> {
             int id = handle.createUpdate("INSERT INTO slideshows " +
-                    "(author_username) VALUES (:author_username)")
-                    .bind("author_username", slideshow.getAdminUser())
+                    "(author_id, slideshow_name) VALUES (:authorId, :slideshowName)")
+                    .bind("authorId", slideshow.getAdminUser().getId())
+                    .bind("slideshowName",slideshow.getSlideshowName())
                     .executeAndReturnGeneratedKeys("id")
                     .mapTo(Integer.class)
                     .findOnly();
@@ -25,8 +26,8 @@ public class SlideshowService extends DatabaseService {
             PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow-slides " +
                     "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)")
                     .bind("slideshow_id", id);
-            for (Image image : images) {
-                batch.bind("slide_id", image.getId());
+            for (int imageId : imagesIds) {
+                batch.bind("slide_id", imageId);
             }
             batch.execute();
         });

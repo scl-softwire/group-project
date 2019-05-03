@@ -6,6 +6,7 @@ public class Slideshow {
 
     private int id;
     private AdminUser adminUser;
+    private String slideshowName;
 
     public int getId() {
         return id;
@@ -13,6 +14,14 @@ public class Slideshow {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getSlideshowName() {
+        return slideshowName;
+    }
+
+    public void setSlideshowName(String slideshowName) {
+        this.slideshowName = slideshowName;
     }
 
     @Nested("adminUser")
