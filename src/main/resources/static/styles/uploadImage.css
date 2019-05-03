@@ -34,8 +34,8 @@
 
 .thumbnail-image {
     border-radius: 20px;
-    max-height: 14vw;
-    max-width: 20vw;
+    max-height: 12vw;
+    max-width: 15vw;
 }
 
 .thumbnail-image-div {
@@ -50,8 +50,8 @@
     object-fit: contain;
 
 
-    width: 22vw;
-    height: 18vw;
+    width: 16vw;
+    height: 16vw;
     margin: 10px;
     padding: 10px 0;
 }
@@ -60,7 +60,7 @@
 .overlay {
     display: none;
     font-size: 0.3vw;
-    word-wrap: break-word;
+    word-wrap: normal;
     width: 10vw;
 }
 .uploadImage {
@@ -74,7 +74,7 @@
     vertical-align: middle;
 }
 .main-content{
-    width: 80%;
+    width: 90%;
     text-align: center;
 }
 
@@ -109,11 +109,11 @@
     justify-content: space-between;
 }
 .delete-image{
-    width: 2vw;
-    height: 1vw;
+    width: 25px;
+    min-height: 100px;
 }
 
 .edit-image{
-    width: 2vw;
-    height: 1vw;
+    width: 25px;
+    min-height: 100px;
 }
