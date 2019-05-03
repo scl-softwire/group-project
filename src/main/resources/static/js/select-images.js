@@ -35,6 +35,7 @@ function createDropdown() {
                             y[k].removeAttribute("class");
                         }
                         this.setAttribute("class", "same-as-selected");
+                        this.setAttribute("url", "this works")
                         break;
                     }
                 }
