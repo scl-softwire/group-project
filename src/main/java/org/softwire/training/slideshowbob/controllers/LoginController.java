@@ -28,12 +28,23 @@ public class LoginController {
         return new ModelAndView("login");
     }
 
+//    @ResponseBody
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String loginPost(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletResponse response) {
+//        String token = authService.login(username, password);
+//        response.addCookie(new Cookie("Token", "Bearer " + token));
+//        return token;
+//    }
+
     @ResponseBody
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPost(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletResponse response) {
-        String token = authService.login(username, password);
-        response.addCookie(new Cookie("Token", "Bearer " + token));
-        return token;
+    @RequestMapping("/fail")
+    public String fail(){
+        return "FAIL";
     }
 
+    @ResponseBody
+    @RequestMapping("/success")
+    public String success(){
+        return "FAIL";
+    }
 }
