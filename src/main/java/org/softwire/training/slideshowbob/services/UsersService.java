@@ -55,7 +55,7 @@ public class UsersService extends DatabaseService {
     }
 
 
-    public AdminUser getUserByUsername(String username) {
+    public AdminUser loadUserByUsername(String username) {
         return jdbi.withHandle(handle ->
                 handle.createQuery("SELECT * FROM admins WHERE username = :username")
                         .bind("username", username)
