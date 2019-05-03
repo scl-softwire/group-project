@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="/styles/dropdown.css"/>
     <link rel="stylesheet" href="/styles/select-images.css"/>
 
-    <script src="/js/select-images.js"></script>
-
 </head>
 
 <body>
@@ -27,20 +25,21 @@
     <div class="jumbotron">
         <h1>Select Photos</h1>
 
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a th:each="image:${model.images}" class="list-item" th:text="${image.imageName}"></a>
-            </div>
+
+        <div class="custom-select" style="width:200px;">
+            <select>
+                <option value="0">Select an image:</option>
+                <option th:each="image:${model.images}" th:text="${image.imageName}"></option>
+            </select>
         </div>
 
-        <select name="sometext" multiple="multiple">
-            <option th:each="image:${model.images}" class="list-item" th:text="${image.imageName}"></option>
-        </select>
+        <button type="submit">Add to list</button>
+
 
     </div>
 </div>
 
+<script src="/js/select-images.js"></script>
 
 </body>
 
