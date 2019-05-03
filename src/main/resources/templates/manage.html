@@ -35,7 +35,9 @@
         <div class="thumbnail-image-div" th:each="image:${model.images}">
             <a><img class="thumbnail-image" th:src="${image.url}"/></a>
             <div class="overlay">
-                <a th:href="'/admin/images/image-delete/' + ${image.id}"><button class="imagebuttons">Delete</button></a>
+                <form th:action="'/admin/images/image-delete/' + ${image.id}" method="post">
+                    <button class="imagebuttons" type="submit">Delete</button>
+                </form>
                 <a th:href="'/admin/manage/edit/' + ${image.id}"><button class="imagebuttons">Edit</button></a>
             </div>
         </div>
