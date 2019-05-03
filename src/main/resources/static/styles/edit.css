@@ -1,12 +1,12 @@
 .imagedetails {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    max-width: 800px;
+    align-items: center;
+    margin: auto;
 }
 
 .imagedetails img {
-    max-width: 50%;
+    max-width: 100%;
     object-fit: contain;
 }
 
@@ -20,3 +20,48 @@
 .savebutton {
 
 }
+.main-content{
+    width: 90%;
+    text-align: center;
+
+}
+
+input[type=text], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    font-size: 1vw;
+}
+
+/* Style the label to display next to the inputs */
+label {
+    display: inline-block;
+    font-size: 1.5vw;
+}
+
+@media only screen and (max-width: 750px) {
+    .imagedetails {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .imagedetails {
+        width: 80vw;
+    }
+
+    .imagedetails > img {
+        width: 35vw;
+        min-width: 270px;
+    }
+
+    .imagedetails > div {
+        width: 35vw;
+    }
+}
+
+

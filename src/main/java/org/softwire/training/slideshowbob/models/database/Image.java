@@ -1,5 +1,7 @@
 package org.softwire.training.slideshowbob.models.database;
 
+import org.jdbi.v3.core.mapper.Nested;
+
 import java.time.LocalDateTime;
 
 public class Image {
