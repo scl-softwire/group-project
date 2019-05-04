@@ -33,7 +33,7 @@
                 <select>
                     <option value="0">Select an image:</option>
                     <option th:each="image:${model.images}"
-                            data-th-attr="data-url=${image.url}, data-name=${image.imageName}"
+                            data-th-attr="data-url=${image.url}, data-name=${image.imageName}, data-id=${image.id}"
                             th:text="${image.imageName}"></option>
                 </select>
             </div>
@@ -45,10 +45,8 @@
                 </ol>
             </div>
 
-            <form>
-                <input type="text" placeholder="Slideshow Name">
-                <button type="submit">Save As Slideshow</button>
-            </form>
+            <input type="text" placeholder="Slideshow Name">
+            <button type="submit" onclick="createNewSlideshow()">Save As Slideshow</button>
 
         </div>
 
