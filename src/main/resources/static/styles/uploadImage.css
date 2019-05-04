@@ -87,14 +87,20 @@ body {
     font-size: 0.3vw;
     word-wrap: break-word;
     width: 10vw;
+    justify-content: space-evenly;
+    justify-items: center;
+
+
 }
 .thumbnail-image-div:hover .overlay {
-    display: block;
+    display: flex;
+    flex-direction: row;
     transform: scale(2);
     -webkit-transform: scale(2);
     transition: transform 1s;
     -webkit-transition: transform 1s;
 }
-button {
-    padding: 5px; !important;
+.imagebuttons{
+    color: black;
 }
+
