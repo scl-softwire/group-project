@@ -1,3 +1,16 @@
+var selectedImageIndex = -1;
+
+function nextImage() {
+    var images = $('#slideshow li span');
+    var numImages = images.length;
+    var nextIndex = (selectedImageIndex + 1) % numImages;
+
+    if (images[selectedImageIndex]) images[selectedImageIndex].style.opacity = '0';
+    if (images[nextIndex]) images[nextIndex].style.opacity = '1';
+
+    selectedImageIndex = nextIndex;
+}
+
 function toggleFullScreen() {
     if (!document.fullscreenElement && !document.webkitFullScreenElement && !document.mozFullScreenElement && !document.msFullScreenElement) {
         if (document.documentElement.requestFullscreen) {
@@ -39,3 +52,10 @@ document.onwebkitfullscreenchange = function() {
         x.style.display = "none";
     }
 };
+
+function loopImages() {
+    nextImage();
+    setTimeout(loopImages, 6000);
+}
+
+document.addEventListener('DOMContentLoaded', loopImages);
