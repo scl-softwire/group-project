@@ -4,6 +4,7 @@ import org.softwire.training.slideshowbob.models.database.Image;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.softwire.training.slideshowbob.models.pages.ImagePageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
+import org.softwire.training.slideshowbob.services.SlideshowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,12 @@ import java.util.Optional;
 public class AdminController {
 
     private final ImagesService imagesService;
+    private final SlideshowService slideshowService;
 
     @Autowired
-    public AdminController(ImagesService imagesService) {
+    public AdminController(ImagesService imagesService, SlideshowService slideshowService) {
         this.imagesService = imagesService;
+        this.slideshowService = slideshowService;
     }
 
     @RequestMapping("")

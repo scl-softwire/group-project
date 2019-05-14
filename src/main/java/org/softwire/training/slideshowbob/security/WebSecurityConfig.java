@@ -1,5 +1,7 @@
 package org.softwire.training.slideshowbob.security;
 
+import org.apache.catalina.SessionEvent;
+import org.apache.catalina.SessionListener;
 import org.softwire.training.slideshowbob.security.security.AuthenticationFailureHandler;
 import org.softwire.training.slideshowbob.security.security.AuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private AuthenticationSuccessHandler successHandler;
