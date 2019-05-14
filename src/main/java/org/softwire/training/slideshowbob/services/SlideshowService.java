@@ -30,7 +30,6 @@ public class SlideshowService extends DatabaseService {
             batch.execute();
         });
     }
-
     public List<SlideshowSlide> getImagesforSlideshow(int id){
         return jdbi.withHandle(handle -> handle.createQuery(
                 "SELECT slideshow_slides.slideshow_id, slideshow_slides.slide_id, slideshow_slides.order, " +

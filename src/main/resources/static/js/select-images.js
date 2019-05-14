@@ -78,19 +78,23 @@ function closeAllSelect(elmnt) {
 function addItemToSlideshowList() {
     // Get the details of the selected item
     var selectedItem = document.getElementsByClassName('selected')[0];
+    var dataId = selectedItem.getAttribute('data-id');
+    var dataUrl = selectedItem.getAttribute('data-url');
     $('#selections').append(`
-        <li data-id="${selectedItem.getAttribute('data-id')}">
-            <img class="image-list-thumbnail" src="${selectedItem.getAttribute('data-url')}"/>
+        <li data-id="${dataId}">
+            <img class="image-list-thumbnail" src="${dataUrl}"/>
             ${selectedItem.getAttribute('data-name')}
+            <button>Delete</button>
         </li>
     `);
+
+    $('#selections li button').last().click(removeItemFromImageList);
 }
 
-// function removeItemFromImageList() {
-//     // Remove image from list of all items if added to slideshow list
-//
-//
-// }
+function removeItemFromImageList() {
+    // Remove image from list of all items if added to slideshow list
+    $(this).closest('li').remove();
+}
 
 document.addEventListener("click", closeAllSelect);
 document.addEventListener('DOMContentLoaded', createDropdown);
