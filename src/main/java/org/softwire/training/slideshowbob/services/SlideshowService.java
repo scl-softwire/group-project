@@ -71,10 +71,11 @@ public class SlideshowService extends DatabaseService {
                 .execute());
     }
 
-    public void deleteSlide(int id) {
+    public void deleteSlide(int id, int slideshowId) {
         jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshow_slides " +
-                "WHERE slide_id = :slide_id")
+                "WHERE slide_id = :slide_id AND slideshow_id = :slideshowId")
                 .bind("slide_id", id)
+                .bind("slideshowId", slideshowId)
                 .execute());
     }
 
