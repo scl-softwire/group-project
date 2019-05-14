@@ -105,7 +105,7 @@ public class SlideshowService extends DatabaseService {
                     .bind("slideshow_id", slideshowId)
                     .execute();
         });
-      
+    }
     public List<Slideshow> getAllSlideshows() {
         return jdbi.withHandle(handle -> handle.createQuery(
                 "SELECT slideshows.id, slideshows.author_id, admins.id AS adminUser_id, " +
