@@ -6,7 +6,7 @@
 <head>
     <title>Group Project - Select Photos</title>
     <link rel="shortcut icon" href="/images/slide2.png"/>
-
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
@@ -38,16 +38,16 @@
                 </select>
             </div>
 
-            <button type="submit" onclick="addItemToSlideshowList()">Add to list</button>
+            <button type="submit" class="buttonStyle" onclick="addItemToSlideshowList()">Add to list</button>
 
-            <div class="selected-images-list">
-                <ol id="selections">
-                </ol>
-            </div>
 
-            <input id="slideshow-name" type="text" placeholder="Slideshow Name">
-            <button onclick="createNewSlideshow()">Save As Slideshow</button>
+            <input class="inputStyle" id="slideshow-name" type="text" placeholder="Slideshow Name">
+            <button class="buttonStyle" onclick="createNewSlideshow()">Save As Slideshow</button>
 
+        </div>
+        <div class="selected-images-list">
+            <ol id="selections">
+            </ol>
         </div>
 
     </div>
