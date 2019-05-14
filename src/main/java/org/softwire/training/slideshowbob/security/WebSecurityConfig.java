@@ -57,4 +57,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder(12);
     }
+
+    @Bean
+    public SessionListener listener(){
+        return sessionEvent -> sessionEvent.getSession().setMaxInactiveInterval(10);
+    }
 }
