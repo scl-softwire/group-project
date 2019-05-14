@@ -7,12 +7,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 public class LoginController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView loginView() {
+    public ModelAndView loginView(HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
+        request.getSession().setAttribute("url_prior_login",referer);
         return new ModelAndView("login");
     }
 
