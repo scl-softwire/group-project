@@ -40,11 +40,7 @@ public class AdminController {
 
     @RequestMapping(value = "/select-images", method = RequestMethod.POST)
     RedirectView createSlideshow(@RequestBody NewSlideshow newSlideshow) {
-        for (int id : newSlideshow.getSlideIds()) {
-            System.out.println(id);
-        }
         slideshowService.createSlideshow(newSlideshow.getSlideshow(), newSlideshow.getSlideIds());
-
         return new RedirectView("/admin");
     }
 

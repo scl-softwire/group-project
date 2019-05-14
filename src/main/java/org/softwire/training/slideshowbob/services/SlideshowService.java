@@ -22,11 +22,10 @@ public class SlideshowService extends DatabaseService {
                     .mapTo(Integer.class)
                     .findOnly();
 
-            PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow-slides " +
-                    "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)")
-                    .bind("slideshow_id", id);
+            PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow_slides " +
+                    "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)");
             for (int imageId : imagesIds) {
-                batch.bind("slide_id", imageId);
+                batch.bind("slideshow_id", id).bind("slide_id", imageId).add();
             }
             batch.execute();
         });
@@ -52,7 +51,7 @@ public class SlideshowService extends DatabaseService {
     }
 
     public void deleteSlideshow(int id) {
-        jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshow-slides " +
+        jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshow_slides " +
                 "WHERE slideshow_id = :slideshow_id")
                 .bind("slideshow_id", id)
                 .execute());

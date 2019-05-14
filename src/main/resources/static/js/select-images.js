@@ -102,11 +102,15 @@ function createNewSlideshow() {
         slideIds.push(listElements[i].getAttribute('data-id'));
     }
     console.log('Got image IDs: ' + slideIds);
-    fetch('/admin/select-images',{method:'post', headers: new Headers({'content-type': 'application/json'}), body:{
+    fetch('/admin/select-images',{method:'post', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify({
         slideshow: { slideshowName: $('#slideshow-name').val() || 'Slideshow' },
-        slideIds: slideIds,
-    }})
-    .then(function() { window.location = '/admin' });
+        slideIds: slideIds
+    })})
+    .then(function(response) {
+        if (!response.ok) throw new Error(response.statusText)
+    })
+    .then(function() { window.location = '/admin' })
+    .catch(function (err) {
+        console.error(err);
+    });
 }
-
-
