@@ -106,13 +106,28 @@ public class SlideshowService extends DatabaseService {
                     .execute();
         });
     }
+
     public List<Slideshow> getAllSlideshows() {
         return jdbi.withHandle(handle -> handle.createQuery(
-                "SELECT slideshows.id, slideshows.author_id, admins.id AS adminUser_id, " +
+                "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name, " +
+                        "admins.id AS adminUser_id, " +
                         "admins.username AS adminUser_username FROM slideshows " +
                         "INNER JOIN admins ON slideshows.author_id = admins.id")
                 .mapToBean(Slideshow.class)
                 .list());
+    }
+
+    public void setCurrentSlideshow(int slideId) {
+        jdbi.useHandle(handle -> handle.createUpdate(
+                "UPDATE `active-slideshow` SET id = :id")
+                .bind("id", slideId)
+                .execute());
+    }
+
+    public Integer getCurrentSlideshow() {
+        return jdbi.withHandle(handle -> handle.createQuery(
+                "SELECT id FROM `active-slideshow`")
+        ).mapTo(Integer.class).findOnly();
     }
 }
 
