@@ -97,9 +97,16 @@ document.addEventListener('DOMContentLoaded', createDropdown);
 
 function createNewSlideshow() {
     var listElements = $('#selections li');
+    var slideIds = [];
     for (var i = 0; i < listElements.length; i++) {
-        console.log(listElements[i].getAttribute('data-id'));
+        slideIds.push(listElements[i].getAttribute('data-id'));
     }
+    console.log('Got image IDs: ' + slideIds);
+    fetch('/admin/select-images',{method:'post', headers: new Headers({'content-type': 'application/json'}), body:{
+        slideshow: { slideshowName: $('#slideshow-name').val() || 'Slideshow' },
+        slideIds: slideIds,
+    }})
+    .then(function() { window.location = '/admin' });
 }
 
 

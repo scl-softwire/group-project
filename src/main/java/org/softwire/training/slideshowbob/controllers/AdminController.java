@@ -1,6 +1,7 @@
 package org.softwire.training.slideshowbob.controllers;
 
 import org.softwire.training.slideshowbob.models.database.Image;
+import org.softwire.training.slideshowbob.models.database.NewSlideshow;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.softwire.training.slideshowbob.models.pages.ImagePageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
@@ -38,9 +39,11 @@ public class AdminController {
 
 
     @RequestMapping(value = "/select-images", method = RequestMethod.POST)
-    RedirectView createSlideshow(@ModelAttribute Slideshow slideshow, @ModelAttribute List<Integer> imagesIds) {
-
-        slideshowService.createSlideshow(slideshow,imagesIds);
+    RedirectView createSlideshow(@RequestBody NewSlideshow newSlideshow) {
+        for (int id : newSlideshow.getSlideIds()) {
+            System.out.println(id);
+        }
+        slideshowService.createSlideshow(newSlideshow.getSlideshow(), newSlideshow.getSlideIds());
 
         return new RedirectView("/admin");
     }

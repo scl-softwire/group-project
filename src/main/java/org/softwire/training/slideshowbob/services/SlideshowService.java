@@ -16,8 +16,7 @@ public class SlideshowService extends DatabaseService {
 
         jdbi.useHandle(handle -> {
             int id = handle.createUpdate("INSERT INTO slideshows " +
-                    "(author_id, slideshow_name) VALUES (:authorId, :slideshowName)")
-                    .bind("authorId", slideshow.getAdminUser().getId())
+                    "(slideshow_name) VALUES (:slideshowName)")
                     .bind("slideshowName",slideshow.getSlideshowName())
                     .executeAndReturnGeneratedKeys("id")
                     .mapTo(Integer.class)
