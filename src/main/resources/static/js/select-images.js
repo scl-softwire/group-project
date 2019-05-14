@@ -79,10 +79,10 @@ function addItemToSlideshowList() {
     // Get the details of the selected item
     var selectedItem = document.getElementsByClassName('selected')[0];
     var dataId = selectedItem.getAttribute('data-id');
-
+    var dataUrl = selectedItem.getAttribute('data-url');
     $('#selections').append(`
         <li data-id="${dataId}">
-            <img class="image-list-thumbnail" src="${selectedItem.getAttribute('data-url')}"/>
+            <img class="image-list-thumbnail" src="${dataUrl}"/>
             ${selectedItem.getAttribute('data-name')}
             <button>Delete</button>
         </li>
