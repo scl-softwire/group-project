@@ -6,7 +6,6 @@ import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.softwire.training.slideshowbob.models.pages.ImagePageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
 import org.softwire.training.slideshowbob.services.SlideshowService;
-import org.softwire.training.slideshowbob.services.auth.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,13 +21,11 @@ import java.util.Optional;
 public class AdminController {
 
     private final ImagesService imagesService;
-    private final AuthService authService;
     private final SlideshowService slideshowService;
 
     @Autowired
-    public AdminController(ImagesService imagesService, AuthService authService, SlideshowService slideshowService) {
+    public AdminController(ImagesService imagesService, SlideshowService slideshowService) {
         this.imagesService = imagesService;
-        this.authService = authService;
         this.slideshowService = slideshowService;
     }
 
@@ -36,7 +33,6 @@ public class AdminController {
     ModelAndView admin() {
         return new ModelAndView("admin");
     }
-
 
     @RequestMapping(value = "/select-images", method = RequestMethod.POST)
     RedirectView createSlideshow(@RequestBody NewSlideshow newSlideshow) {
