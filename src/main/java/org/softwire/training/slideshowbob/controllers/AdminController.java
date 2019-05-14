@@ -1,6 +1,7 @@
 package org.softwire.training.slideshowbob.controllers;
 
 import org.softwire.training.slideshowbob.models.database.Image;
+import org.softwire.training.slideshowbob.models.database.NewSlideshow;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.softwire.training.slideshowbob.models.pages.ImagePageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
@@ -38,10 +39,8 @@ public class AdminController {
 
 
     @RequestMapping(value = "/select-images", method = RequestMethod.POST)
-    RedirectView createSlideshow(@ModelAttribute Slideshow slideshow, @ModelAttribute List<Image> images) {
-
-        slideshowService.createSlideshow(slideshow,images);
-
+    RedirectView createSlideshow(@RequestBody NewSlideshow newSlideshow) {
+        slideshowService.createSlideshow(newSlideshow.getSlideshow(), newSlideshow.getSlideIds());
         return new RedirectView("/admin");
     }
 
@@ -55,7 +54,6 @@ public class AdminController {
     ModelAndView allImages() {
         List<Image> allImages = imagesService.getAllImages();
         return new ModelAndView("select-images", "model", new ImagePageModel(allImages));
- 
     }
 
     @RequestMapping("/manage/edit/{id}") ModelAndView edit(@PathVariable("id") Integer id) throws Exception {
@@ -67,12 +65,13 @@ public class AdminController {
         }
     }
 
-
     @ResponseStatus(HttpStatus.NOT_FOUND)
     private static class ImageNotFoundException extends Exception {
         private ImageNotFoundException(Integer id) {
             super("Image with id " + id + " + was not found");
         }
     }
+
+
 
 }
