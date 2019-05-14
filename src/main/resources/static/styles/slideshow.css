@@ -17,77 +17,34 @@ body {
     top: 0px;
     left: 0px;
     color: transparent;
-    background-size: cover;
+    background-color: black;
+    background-size: contain;
     background-position: 50% 50%;
-    background-repeat: none;
+    background-repeat: no-repeat;
     opacity: 0;
     z-index: 0;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+
+    transition: opacity 3s ease-in-out;
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
 }
 
-@-webkit-keyframes imageAnimation {
-    0% {
-        opacity: 0;
-        -webkit-animation-timing-function: ease-in;
-    }
-    12.5% {
-        opacity: 1;
-        -webkit-animation-timing-function: ease-out;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
+.fullscreenbutton {
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+    background-color: #d1d1d1;
+    opacity: 0.5;
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
-@-moz-keyframes imageAnimation {
-    0% {
-        opacity: 0;
-        -moz-animation-timing-function: ease-in;
-    }
-    12.5% {
-        opacity: 1;
-        -moz-animation-timing-function: ease-out;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@keyframes imageAnimation {
-    0% {
-        opacity: 0;
-        -webkit-animation-timing-function: ease-in;
-        -moz-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-    12.5% {
-        opacity: 1;
-        -webkit-animation-timing-function: ease-out;
-        -moz-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-    25% {
-        opacity: 1;
-    }
-    37.5% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-.no-cssanimations .slideshow li span {
-    opacity: 1;
-}
+
+.fullscreenbutton:hover
 
