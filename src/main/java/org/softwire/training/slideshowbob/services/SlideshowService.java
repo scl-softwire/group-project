@@ -23,9 +23,13 @@ public class SlideshowService extends DatabaseService {
                     .findOnly();
 
             PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow_slides " +
-                    "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)");
-            for (int imageId : imagesIds) {
-                batch.bind("slideshow_id", id).bind("slide_id", imageId).add();
+                    "(slideshow_id, slide_id, `order`) VALUES (:slideshow_id, :slide_id, :order)");
+            for (int i = 0; i < imagesIds.size(); i++) {
+                batch
+                        .bind("slideshow_id", id)
+                        .bind("slide_id", imagesIds.get(i))
+                        .bind("order", i)
+                        .add();
             }
             batch.execute();
         });
