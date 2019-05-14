@@ -42,10 +42,12 @@ public class SlideshowController {
 
         Slideshow slideshow = slideshowService.getSlideshow(id);
         List<SlideshowSlide> imagesForSlideshow = slideshowService.getImagesforSlideshow(id);
+        List<Image> allImages = imagesService.getAllImages();
 
         return new ModelAndView("edit-slideshow", "model", new EditSlideshowPageModel(
                 slideshow,
-                imagesForSlideshow
+                imagesForSlideshow,
+                allImages
         ));
 
     }
