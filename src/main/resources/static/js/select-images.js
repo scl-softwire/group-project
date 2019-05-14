@@ -84,8 +84,8 @@ function addItemToSlideshowList() {
         <li data-id="${dataId}">
             <img class="image-list-thumbnail" src="${dataUrl}"/>
             ${selectedItem.getAttribute('data-name')}
-            <button class="move-up">Move Up</button>
-            <button class="move-down">Move Down</button>
+            <button class="move-up">▲</button>
+            <button class="move-down">▼</button>
             <button class="delete">Delete</button>
         </li>
     `);
