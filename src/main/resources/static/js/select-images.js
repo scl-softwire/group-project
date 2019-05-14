@@ -82,18 +82,38 @@ function addItemToSlideshowList() {
     var dataUrl = selectedItem.getAttribute('data-url');
     $('#selections').append(`
         <li data-id="${dataId}">
-            <img class="image-list-thumbnail" src="${dataUrl}"/>
-            ${selectedItem.getAttribute('data-name')}
-            <button>Delete</button>
+            <div class="slideshow-list-item">
+                <img class="image-list-thumbnail" src="${dataUrl}"/>
+                <div class="infobox">
+                    <span class="image-name">${selectedItem.getAttribute('data-name')}</span>
+                    <div class="move-buttons">
+                        <button class="move-up">▲</button>
+                        <button class="move-down">▼</button>
+                    </div>
+                    <button class="delete">Delete</button>
+                </div>
+             </div>
         </li>
     `);
 
-    $('#selections li button').last().click(removeItemFromImageList);
+    $('#selections li button.delete').last().click(removeItemFromImageList);
+    $('#selections li button.move-up').last().click(moveUp);
+    $('#selections li button.move-down').last().click(moveDown);
 }
 
 function removeItemFromImageList() {
     // Remove image from list of all items if added to slideshow list
     $(this).closest('li').remove();
+}
+
+function moveUp() {
+    var $before = $(this).closest('li').prev();
+    $(this).closest('li').after($before);
+}
+
+function moveDown() {
+    var $after = $(this).closest('li').next();
+    $(this).closest('li').before($after);
 }
 
 document.addEventListener("click", closeAllSelect);
