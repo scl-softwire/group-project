@@ -67,8 +67,8 @@
 }
 
 .image-list-thumbnail {
-    height: 72px;
-    width: 72px;
+    height: 108px;
+    width: 108px;
 }
 
 .selected-images-list ol {
@@ -94,4 +94,35 @@
     font-family: 'Arima Madurai', cursive;
     font-size: 15px;
     height: 40px;
+}
+
+.move-up, .move-down {
+    padding: 0 16px;
+    font-family: 'Arima Madurai', cursive;
+    font-size: 8px;
+    height: 20px;
+}
+
+.delete {
+    padding: 8px 16px;
+    font-family: 'Arima Madurai', cursive;
+    font-size: 15px;
+    height: 40px
+}
+
+.slideshow-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin-bottom: 8px;
+}
+
+.image-list-thumbnail {
+    margin-right: 8px;
+}
+
+.infobox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

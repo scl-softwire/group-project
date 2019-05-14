@@ -82,11 +82,17 @@ function addItemToSlideshowList() {
     var dataUrl = selectedItem.getAttribute('data-url');
     $('#selections').append(`
         <li data-id="${dataId}">
-            <img class="image-list-thumbnail" src="${dataUrl}"/>
-            ${selectedItem.getAttribute('data-name')}
-            <button class="move-up">▲</button>
-            <button class="move-down">▼</button>
-            <button class="delete">Delete</button>
+            <div class="slideshow-list-item">
+                <img class="image-list-thumbnail" src="${dataUrl}"/>
+                <div class="infobox">
+                    <span class="image-name">${selectedItem.getAttribute('data-name')}</span>
+                    <div class="move-buttons">
+                        <button class="move-up">▲</button>
+                        <button class="move-down">▼</button>
+                    </div>
+                    <button class="delete">Delete</button>
+                </div>
+             </div>
         </li>
     `);
 
