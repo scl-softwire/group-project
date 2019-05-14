@@ -1,6 +1,7 @@
 package org.softwire.training.slideshowbob.services;
 
 import org.jdbi.v3.core.statement.PreparedBatch;
+import org.softwire.training.slideshowbob.models.database.AdminUser;
 import org.softwire.training.slideshowbob.models.database.Image;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.softwire.training.slideshowbob.models.database.SlideshowSlide;
@@ -13,21 +14,26 @@ import java.util.Optional;
 @Service
 public class SlideshowService extends DatabaseService {
 
-    public void createSlideshow(Slideshow slideshow, List<Integer> imagesIds) {
+    public void createSlideshow(Slideshow slideshow, List<Integer> imagesIds, AdminUser loggedInAs) {
         // Create Slideshow in Slideshow Table
 
         jdbi.useHandle(handle -> {
             int id = handle.createUpdate("INSERT INTO slideshows " +
-                    "(slideshow_name) VALUES (:slideshowName)")
+                   "(slideshow_name, author_id) VALUES (:slideshowName, :authorId)")
                     .bind("slideshowName", slideshow.getSlideshowName())
+                    .bind("authorId", loggedInAs.getId())
                     .executeAndReturnGeneratedKeys("id")
                     .mapTo(Integer.class)
                     .findOnly();
 
             PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow_slides " +
-                    "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)");
-            for (int imageId : imagesIds) {
-                batch.bind("slideshow_id", id).bind("slide_id", imageId).add();
+                    "(slideshow_id, slide_id, `order`) VALUES (:slideshow_id, :slide_id, :order)");
+            for (int i = 0; i < imagesIds.size(); i++) {
+                batch
+                        .bind("slideshow_id", id)
+                        .bind("slide_id", imagesIds.get(i))
+                        .bind("order", i)
+                        .add();
             }
             batch.execute();
         });
@@ -99,6 +105,14 @@ public class SlideshowService extends DatabaseService {
                     .bind("slideshow_id", slideshowId)
                     .execute();
         });
+      
+    public List<Slideshow> getAllSlideshows() {
+        return jdbi.withHandle(handle -> handle.createQuery(
+                "SELECT slideshows.id, slideshows.author_id, admins.id AS adminUser_id, " +
+                        "admins.username AS adminUser_username FROM slideshows " +
+                        "INNER JOIN admins ON slideshows.author_id = admins.id")
+                .mapToBean(Slideshow.class)
+                .list());
     }
 }
 

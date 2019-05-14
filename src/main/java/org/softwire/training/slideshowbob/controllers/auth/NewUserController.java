@@ -1,4 +1,4 @@
-package org.softwire.training.slideshowbob.controllers;
+package org.softwire.training.slideshowbob.controllers.auth;
 
 import org.softwire.training.slideshowbob.models.database.AdminUser;
 import org.softwire.training.slideshowbob.services.UsersService;

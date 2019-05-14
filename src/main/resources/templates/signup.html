@@ -5,9 +5,19 @@
 <head>
     <title>Slideshow Bob - Sign up</title>
     <link rel="shortcut icon" href="/images/slide2.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/index.css"/>
+    <link rel="stylesheet" href="/styles/signup.css"/>
 </head>
 
 <body>
+
+<div th:replace="fragments/navbar :: navbar">
+    <!-- This element is replaced by the HTML in fragments/navbar.html -->
+</div>
+
 <h1>Sign Up to be an Admin</h1>
 
 <form method="post" action="/signup">
@@ -20,7 +30,7 @@
         <label for="password_box">Password:</label>
         <input type="password" name="password" id="password_box"/>
     </div>
-    <input type="submit" value="Sign up!"/>
+    <button class="signUpButton" type="submit">Sign Up!</button>
 </form>
 </body>
 

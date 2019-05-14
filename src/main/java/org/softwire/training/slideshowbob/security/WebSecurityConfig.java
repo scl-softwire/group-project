@@ -1,33 +1,65 @@
 package org.softwire.training.slideshowbob.security;
 
-import org.softwire.training.slideshowbob.security.jwt.JwtTokenFilterConfigurer;
-import org.softwire.training.slideshowbob.security.jwt.TokenAuthenticationService;
+import org.apache.catalina.SessionEvent;
+import org.apache.catalina.SessionListener;
+import org.softwire.training.slideshowbob.security.security.AuthenticationFailureHandler;
+import org.softwire.training.slideshowbob.security.security.AuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private TokenAuthenticationService tokenAuthenticationService;
+    private AuthenticationSuccessHandler successHandler;
+    private AuthenticationFailureHandler failureHandler;
 
     @Autowired
-    public WebSecurityConfig(TokenAuthenticationService tokenAuthenticationService) {
-        this.tokenAuthenticationService = tokenAuthenticationService;
+    public WebSecurityConfig(AuthenticationSuccessHandler successHandler, AuthenticationFailureHandler failureHandler) {
+        this.failureHandler = failureHandler;
+        this.successHandler = successHandler;
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // disable caching
-        http.headers().cacheControl();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.csrf().disable(); // disable csrf for our requests.
+        http.csrf().disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/",
+                        "/js/*",
+                        "/styles/*",
+                        "/login",
+                        "/signup",
+                        "/favicon.ico",
+                        "/images/*",
+                        "/slideshow").permitAll()
+                .anyRequest().authenticated()
+                .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
+                .successHandler(successHandler)
+                .failureHandler(failureHandler)
+                .and()
+                .logout()
+                .deleteCookies("JSESSIONID")
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");
+    }
 
-        http.exceptionHandling().accessDeniedPage("/");
-        http.apply(new JwtTokenFilterConfigurer(tokenAuthenticationService));
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
+
+    @Bean
+    public SessionListener listener(){
+        return sessionEvent -> sessionEvent.getSession().setMaxInactiveInterval(10);
     }
 }

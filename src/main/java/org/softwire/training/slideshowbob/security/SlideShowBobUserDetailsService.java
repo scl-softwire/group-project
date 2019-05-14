@@ -1,6 +1,5 @@
 package org.softwire.training.slideshowbob.security;
 
-import org.softwire.training.slideshowbob.security.UserPrincipal;
 import org.softwire.training.slideshowbob.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +20,6 @@ public class SlideShowBobUserDetailsService implements UserDetailsService {
 
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new UserPrincipal(usersService.getUserByUsername(username));
+        return new UserPrincipal(usersService.loadUserByUsername(username));
     }
 }
