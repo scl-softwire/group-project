@@ -86,11 +86,11 @@ function addItemToSlideshowList() {
     `);
 }
 
-function removeItemFromImageList() {
-    // Remove image from list of all items if added to slideshow list
-
-
-}
+// function removeItemFromImageList() {
+//     // Remove image from list of all items if added to slideshow list
+//
+//
+// }
 
 document.addEventListener("click", closeAllSelect);
 document.addEventListener('DOMContentLoaded', createDropdown);
