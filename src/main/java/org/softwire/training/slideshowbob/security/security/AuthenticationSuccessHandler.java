@@ -19,7 +19,6 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) 
             throws IOException {
-        request.getSession().setMaxInactiveInterval(10);
         response.sendRedirect("/admin");
     }
 }
