@@ -23,7 +23,8 @@ public class AdminSlideshowController {
     @RequestMapping(value = "/select", method = RequestMethod.GET)
     public ModelAndView selectAvtiveSlideshow() {
         List<Slideshow> slideshowList = slideshowService.getAllSlideshows();
-        SelectActiveSlideshowPageModel model = new SelectActiveSlideshowPageModel(slideshowList);
+        Slideshow activeSlideshow = slideshowService.getCurrentSlideshow();
+        SelectActiveSlideshowPageModel model = new SelectActiveSlideshowPageModel(slideshowList, activeSlideshow);
         return new ModelAndView("/admin/slideshow/select-active-slideshow.html", "model", model);
     }
 

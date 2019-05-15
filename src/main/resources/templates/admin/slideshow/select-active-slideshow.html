@@ -28,7 +28,8 @@
 
             <form action="/admin/slideshows/select" method="post">
                 <div  th:each="slideshow : ${model.slideshows}">
-                <input name="slideshow" th:value="${slideshow.id}" type="radio">
+                <input name="slideshow" th:value="${slideshow.id}" th:checked="${model.activeSlideshow.id==slideshow.id}"
+                       type="radio" required>
                 <span th:text="${slideshow.slideshowName}"></span> -
                     <a th:href="@{'/edit-slideshow/' + ${slideshow.id}}">EDIT</a>
                 </div>
