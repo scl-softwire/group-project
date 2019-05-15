@@ -5,6 +5,7 @@ import org.softwire.training.slideshowbob.models.database.Image;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
 import org.softwire.training.slideshowbob.models.database.SlideshowSlide;
 import org.softwire.training.slideshowbob.models.pages.EditSlideshowPageModel;
+import org.softwire.training.slideshowbob.models.pages.PlaySlideshowPageModel;
 import org.softwire.training.slideshowbob.services.ImagesService;
 import org.softwire.training.slideshowbob.services.SlideshowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,10 @@ public class SlideshowController {
 
     @RequestMapping("/slideshow")
     ModelAndView slideshow() {
-        // Eventually, these links will come from the database. But for now, they're hardcoded!
-        List<String> imageUrls = imagesService.getImageURLs();
-        return new ModelAndView("slideshow", "model", imageUrls);
+        Slideshow slideshow = slideshowService.getCurrentSlideshow();
+        List<SlideshowSlide> slideshowSlides = slideshowService.getImagesforSlideshow(slideshow.getId());
+        PlaySlideshowPageModel model = new PlaySlideshowPageModel(slideshow, slideshowSlides);
+        return new ModelAndView("slideshow", "model", model);
     }
 
     @RequestMapping("/edit-slideshow/{id}")
@@ -49,8 +51,9 @@ public class SlideshowController {
         ));
 
     }
+
     @RequestMapping(value = "/edit-slideshow/{id}/slide-delete/{slideId}", method = RequestMethod.POST)
-    RedirectView deleteSlide(@PathVariable("slideId") Integer slideId, @PathVariable("id") Integer id)  {
+    RedirectView deleteSlide(@PathVariable("slideId") Integer slideId, @PathVariable("id") Integer id) {
 
         slideshowService.deleteSlide(slideId, id);
 
