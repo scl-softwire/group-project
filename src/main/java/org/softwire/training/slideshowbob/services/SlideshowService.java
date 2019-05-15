@@ -139,11 +139,17 @@ public class SlideshowService extends DatabaseService {
     }
 
     public Slideshow getCurrentSlideshow() {
-        return jdbi.withHandle(handle -> handle.createQuery(
-                "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name " +
-                        "FROM slideshows INNER JOIN `active-slideshow` " +
-                        "ON `active-slideshow`.id = slideshows.id"
-        ).mapToBean(Slideshow.class).first());
+        try {
+            return jdbi.withHandle(handle -> handle.createQuery(
+                    "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name " +
+                            "FROM slideshows INNER JOIN `active-slideshow` " +
+                            "ON `active-slideshow`.id = slideshows.id"
+            ).mapToBean(Slideshow.class).first());
+        } catch (Exception e) {
+            return jdbi.withHandle(handle -> handle.createQuery(
+                    "SELECT * from slideshows"
+            ).mapToBean(Slideshow.class).first());
+        }
     }
 }
 
