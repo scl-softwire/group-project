@@ -22,18 +22,18 @@
 <div class="container">
     <div class="jumbotron">
 
-        <h1>Select A Slideshow to Play</h1>
+        <h1>Manage Slideshows</h1>
         <div class="displayItems">
             <h4>Please pick a slideshow to play.</h4>
 
-            <form action="/admin/slideshows/select" method="post">
+            <form action="/admin/slideshows" method="post">
                 <div  th:each="slideshow : ${model.slideshows}">
                 <input name="slideshow" th:value="${slideshow.id}" th:checked="${model.activeSlideshow.id==slideshow.id}"
                        type="radio" required>
                 <span th:text="${slideshow.slideshowName}"></span> -
-                    <a th:href="@{'/edit-slideshow/' + ${slideshow.id}}">EDIT</a>
+                    <a th:href="@{'/admin/slideshows/edit/' + ${slideshow.id}}">EDIT</a>
                 </div>
-                <button class="submitButton" type="submit" id="Submit">Submit</button>
+                <button class="submitButton" type="submit" id="Submit">Set As Active Slideshow</button>
 
             </form>
         </div>

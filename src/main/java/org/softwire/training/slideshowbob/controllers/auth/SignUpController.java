@@ -11,22 +11,21 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping(value = "/signup")
-public class NewUserController {
+public class SignUpController {
 
     private final UsersService usersService;
 
     @Autowired
-    public NewUserController(UsersService usersService) {
+    public SignUpController(UsersService usersService) {
         this.usersService = usersService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public ModelAndView showSignUpPage() {
-        return new ModelAndView("signup");
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public ModelAndView signUpView() {
+        return new ModelAndView("auth/signup");
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public RedirectView signUp(@ModelAttribute AdminUser user) {
         usersService.createUser(user);
         return new RedirectView("/");
