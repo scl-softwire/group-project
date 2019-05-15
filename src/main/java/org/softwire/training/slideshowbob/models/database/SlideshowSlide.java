@@ -35,7 +35,7 @@ public class SlideshowSlide {
         this.order = order;
     }
 
-    @Nested("slideshow")
+    @Nested("sshow")
     public Slideshow getSlideshow() {
         return slideshow;
     }
@@ -44,7 +44,7 @@ public class SlideshowSlide {
         this.slideshow = slideshow;
     }
 
-    @Nested("slide")
+    @Nested("image")
     public Image getSlide() {
         return slide;
     }

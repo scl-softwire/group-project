@@ -6,10 +6,15 @@
 <head>
     <title>Group Project - Select Photos</title>
     <link rel="shortcut icon" href="/images/slide2.png"/>
-
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
+    <link rel="stylesheet" href="/styles/dropdown.css"/>
+    <link rel="stylesheet" href="/styles/select-images.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="/js/select-images.js"></script>
 </head>
 
 <body>
@@ -22,22 +27,28 @@
     <div class="jumbotron">
         <h1>Select Photos</h1>
 
-        <table>
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Information</th>
-                <th>Delete Image</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="image:${model.images}">
-                <td><img class="thumbnails" th:src="${image.url}"></td>
-                <td th:text="${image.id + ' ' + image.author + ' ' + image.imageName}"></td>
-                <td><a></a><button class="delete-image"><span>X</span></button></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="display-container">
+
+            <div class="custom-select" style="width:200px;">
+                <select>
+                    <option value="0">Select an image:</option>
+                    <option th:each="image:${model.images}"
+                            data-th-attr="data-url=${image.url}, data-name=${image.imageName}, data-id=${image.id}"
+                            th:text="${image.imageName}"></option>
+                </select>
+            </div>
+
+            <button type="submit" class="buttonStyle" onclick="addItemToSlideshowList()">Add to list</button>
+
+
+            <input class="inputStyle" id="slideshow-name" type="text" placeholder="Slideshow Name">
+            <button class="buttonStyle" onclick="createNewSlideshow()">Save As Slideshow</button>
+
+        </div>
+        <div class="selected-images-list">
+            <ol id="selections">
+            </ol>
+        </div>
 
     </div>
 </div>

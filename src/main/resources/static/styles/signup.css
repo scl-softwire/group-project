@@ -1,0 +1,36 @@
+.signUpButton {
+    padding: 8px 16px;
+    font-family: 'Arima Madurai', cursive;
+    font-size: 15px;
+    height: 40px;
+    width: 250px;
+}
+
+.form-row {
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logInButton {
+    padding: 8px 16px;
+    font-family: 'Arima Madurai', cursive;
+    font-size: 15px;
+    height: 40px;
+    width: 250px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0;
+}
+
+.usernameInput, .passwordInput {
+    font-family: 'Arima Madurai', cursive;
+    margin: 2px 0px;
+}
+
