@@ -3,14 +3,13 @@
 
 
 <head>
-    <title>Slideshow Bob - Admin Login</title>
+    <title>Group Project - Admin</title>
     <link rel="shortcut icon" href="/images/slide2.png"/>
+
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
-    <link rel="stylesheet" href="/styles/signup.css"/>
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 </head>
 
 <body>
@@ -19,12 +18,19 @@
     <!-- This element is replaced by the HTML in fragments/navbar.html -->
 </div>
 
-<h1>Login</h1>
-<form class="form" action="/login" id="login-form" method="post">
-    <input class="usernameInput" type="text" name="username" placeholder="Username">
-    <input class="passwordInput" type="password" name="password" placeholder="Password">
-    <button class="logInButton" type="submit" id="login-button">Log in!</button>
-</form>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Admin Page</h1>
+
+        <div class="index-buttons-container">
+            <a href="/admin/images"><button class="btn btn6">Manage Images</button></a>
+            <a href="/admin/slideshows/create"><button class="btn btn6">Create A New Slideshow</button></a>
+            <a href="/admin/slideshows"><button class="btn btn6">Manage Slideshows</button></a>
+        </div>
+
+    </div>
+</div>
+
 </body>
 
 
