@@ -50,7 +50,7 @@ public class SlideshowService extends DatabaseService {
 
     public List<SlideshowSlide> getImagesforSlideshow(int id) {
         return jdbi.withHandle(handle -> handle.createQuery(
-                "SELECT slideshow_slides.slideshow_id, slideshow_slides.slide_id, slideshow_slides.order, " +
+                "SELECT slideshow_slides.id, slideshow_slides.slideshow_id, slideshow_slides.slide_id, slideshow_slides.order, " +
                         "slideshows.id AS sshow_id, slideshows.author_id AS sshow_author_id, " +
                         "upload_images.id AS image_id, " +
                         "upload_images.date_time_stamp AS image_date_time_stamp, " +
@@ -79,8 +79,8 @@ public class SlideshowService extends DatabaseService {
 
     public void deleteSlide(int id, int slideshowId) {
         jdbi.useHandle(handle -> handle.createUpdate("DELETE FROM slideshow_slides " +
-                "WHERE slide_id = :slide_id AND slideshow_id = :slideshowId")
-                .bind("slide_id", id)
+                "WHERE id = :id AND slideshow_id = :slideshowId")
+                .bind("id", id)
                 .bind("slideshowId", slideshowId)
                 .execute());
     }
@@ -126,7 +126,7 @@ public class SlideshowService extends DatabaseService {
                 "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name, " +
                         "admins.id AS adminUser_id, " +
                         "admins.username AS adminUser_username FROM slideshows " +
-                        "INNER JOIN admins ON slideshows.author_id = admins.id")
+                        "LEFT JOIN admins ON slideshows.author_id = admins.id")
                 .mapToBean(Slideshow.class)
                 .list());
     }

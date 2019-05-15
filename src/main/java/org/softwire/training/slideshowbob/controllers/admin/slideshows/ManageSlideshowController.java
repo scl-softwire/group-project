@@ -23,8 +23,9 @@ public class ManageSlideshowController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView manageSlideshows() {
         List<Slideshow> slideshowList = slideshowService.getAllSlideshows();
-        ManageSlideshowPageModel model = new ManageSlideshowPageModel(slideshowList);
-        return new ModelAndView("/admin/slideshow/manage-slideshows.html", "model", model);
+        Slideshow activeSlideshow = slideshowService.getCurrentSlideshow();
+        ManageSlideshowPageModel model = new ManageSlideshowPageModel(slideshowList,activeSlideshow);
+        return new ModelAndView("/admin/slideshow/manage-slideshows", "model", model);
     }
 
     @RequestMapping(value = "",method = RequestMethod.POST)
