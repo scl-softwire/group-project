@@ -107,6 +107,20 @@ public class SlideshowService extends DatabaseService {
         });
     }
 
+    public void addExistingSlidesToSlideshow(int slideshowId, List<Integer> slides) {
+        jdbi.useHandle(handle -> {
+            PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow_slides " +
+                    "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)");
+            for (int i = 0; i < slides.size(); i++) {
+                batch
+                        .bind("slideshow_id", slideshowId)
+                        .bind("slide_id", slides.get(i))
+                        .add();
+            }
+            batch.execute();
+        });
+    }
+
     public List<Slideshow> getAllSlideshows() {
         return jdbi.withHandle(handle -> handle.createQuery(
                 "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name, " +

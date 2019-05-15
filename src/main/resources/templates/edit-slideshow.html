@@ -19,6 +19,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="/js/select-images.js"></script>
+    <script src="/js/edit-slideshow.js"></script>
 
 </head>
 <body>
@@ -109,6 +110,11 @@
                                 data-th-attr="data-url=${image.url}, data-name=${image.imageName}, data-id=${image.id}"
                                 th:text="${image.imageName}"></option>
                     </select>
+                        <div class="selected-images-list">
+                            <button type="submit" class="buttonStyle" onclick="addExistingItemToSlideshowList()">Add</button>
+                            <ol id="selections"></ol>
+                            <button class="buttonStyle" onclick="updateSlideshow()">Update</button>
+                        </div>
                     </div>
                 </div>
             </div>
