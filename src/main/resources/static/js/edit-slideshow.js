@@ -25,7 +25,7 @@ function updateSlideshow() {
     }
     var slideshowId = window.location.pathname.split("/").pop();
 
-    fetch(`/edit-slideshow/${slideshowId}/added-image`,{method:'post', headers: {'content-type': 'application/json'}, body: JSON.stringify({
+    fetch(`/edit/${slideshowId}/add`,{method:'post', headers: {'content-type': 'application/json'}, body: JSON.stringify({
             slideIds: slideIds
         })})
         .then(function(response) {

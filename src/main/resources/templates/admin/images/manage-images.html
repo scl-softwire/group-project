@@ -27,7 +27,7 @@
     <div class="thumbnail-image-div">
         <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#myModal">
             <img class="thumbnail-image" alt="upload icon"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbMnLmCcifVdReL3JQny4hNf-sAr-IpiSnFA4jmraUCqeV4v07"/>
+                 src="https://static.thenounproject.com/png/625182-200.png"/>
             <h4>Upload Image</h4>
         </a>
     </div>
@@ -35,10 +35,10 @@
         <div class="thumbnail-image-div" th:each="image:${model.images}">
             <a><img class="thumbnail-image" th:src="${image.url}"/></a>
             <div class="overlay">
-                <form th:action="'/admin/images/image-delete/' + ${image.id}" method="post">
+                <form th:action="'/admin/images/delete/' + ${image.id}" method="post">
                     <button class="imagebuttons" type="submit">Delete</button>
                 </form>
-                <a th:href="'/admin/manage/edit/' + ${image.id}"><button class="imagebuttons">Edit</button></a>
+                <a th:href="'/admin/images/edit/' + ${image.id}"><button class="imagebuttons">Edit</button></a>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form th:action="@{/admin/images/added}" method="post">
+                    <form th:action="@{/admin/images/upload}" method="post">
                         <label class="modal-form-field">
                             <span>Author: </span>
                             <input id="author" type="text" name="author" required>

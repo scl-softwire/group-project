@@ -4,12 +4,21 @@ import org.jdbi.v3.core.mapper.Nested;
 
 public class SlideshowSlide {
 
+    private int id;
     private int slideshowId;
     private int slideId;
     private int order;
 
     private Slideshow slideshow;
     private Image slide;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getSlideshowId() {
         return slideshowId;

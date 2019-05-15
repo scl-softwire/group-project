@@ -34,51 +34,23 @@ body {
     text-align: center;
 }
 
-.dots-button {
-    background: none;
-    color: #e68400;
-}
-.dots-button:hover {
-    -webkit-animation: halftone 1s forwards;
-    animation: halftone 1s forwards;
-    background: radial-gradient(circle, rgb(92, 134, 205) 0.2em, transparent 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, rgb(92, 134, 205) 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em 1.25em;
-    color: #e68400;
-}
 
-@-webkit-keyframes halftone {
-    100% {
-        background-size: 2.375em 2.375em, 0.1em 0.1em;
-    }
-}
-
-@keyframes halftone {
-    100% {
-        background-size: 2.375em 2.375em, 0.1em 0.1em;
-    }
-}
-
-.sawtooth-button {
-    background: none;
+/* BUTTON 6 */
+.btn6, .btn6:link, .btn6:visited {
+    padding: 13px 13px;
+    border: 1px solid #5c86cd;
     color: #5c86cd;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 3px;
+    transition: all .2s ease-in-out;
 }
-.sawtooth-button:hover {
-    -webkit-animation: sawtooth 0.35s infinite linear;
-    animation: sawtooth 0.35s infinite linear;
-    background: linear-gradient(45deg, #e68400 0.5em, transparent 0.5em) 0 0/1em 1em, linear-gradient(-45deg, #e68400 0.5em, transparent 0.5em) 0 0/1em 1em;
-    color: #5c86cd;
-
-}
-
-@-webkit-keyframes sawtooth {
-    100% {
-        background-position: 1em 0;
-    }
-}
-
-@keyframes sawtooth {
-    100% {
-        background-position: 1em 0;
-    }
+.btn6:hover, .btn6:link:hover, .btn6:visited:hover {
+    background: #5c86cd;
+    border: 1px solid #5c86cd;
+    color: #fefefe;
+    border-radius: 30px;
 }
 
 .thumbnails {
@@ -90,3 +62,5 @@ body {
     height: 54px;
     width: 54px;
 }
+
+

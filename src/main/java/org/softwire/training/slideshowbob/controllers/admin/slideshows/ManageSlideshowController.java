@@ -1,9 +1,9 @@
-package org.softwire.training.slideshowbob.controllers.admin;
+package org.softwire.training.slideshowbob.controllers.admin.slideshows;
 
 
 import org.softwire.training.slideshowbob.models.database.CurrentSlideshow;
 import org.softwire.training.slideshowbob.models.database.Slideshow;
-import org.softwire.training.slideshowbob.models.pages.SelectActiveSlideshowPageModel;
+import org.softwire.training.slideshowbob.models.pages.ManageSlideshowPageModel;
 import org.softwire.training.slideshowbob.services.SlideshowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,22 +15,23 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/slideshows")
-public class AdminSlideshowController {
+public class ManageSlideshowController {
 
     @Autowired
     SlideshowService slideshowService = new SlideshowService();
 
-    @RequestMapping(value = "/select", method = RequestMethod.GET)
-    public ModelAndView selectAvtiveSlideshow() {
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ModelAndView manageSlideshows() {
         List<Slideshow> slideshowList = slideshowService.getAllSlideshows();
-        SelectActiveSlideshowPageModel model = new SelectActiveSlideshowPageModel(slideshowList);
-        return new ModelAndView("/admin/slideshow/select-active-slideshow.html", "model", model);
+        Slideshow activeSlideshow = slideshowService.getCurrentSlideshow();
+        ManageSlideshowPageModel model = new ManageSlideshowPageModel(slideshowList,activeSlideshow);
+        return new ModelAndView("/admin/slideshow/manage-slideshows", "model", model);
     }
 
-    @RequestMapping(value = "/select",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST)
     public RedirectView setActiveSlideshow(@ModelAttribute CurrentSlideshow slideshow) {
         slideshowService.setCurrentSlideshow(slideshow.getSlideshow());
-        return new RedirectView("/admin");
+        return new RedirectView("/admin/slideshows");
     }
 
 }
