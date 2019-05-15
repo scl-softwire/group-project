@@ -28,7 +28,7 @@ function createDropdown() {
                 h = this.parentNode.previousSibling;
                 for (i = 0; i < s.length; i++) {
                     s.options[i].removeAttribute('class');
-                    if (s.options[i].innerHTML === this.innerHTML) {
+                    if (this.innerHTML.startsWith(s.options[i].innerHTML)) {
                         s.options[i].setAttribute('class', 'selected');
                         s.selectedIndex = i;
                         h.innerHTML = this.innerHTML;
