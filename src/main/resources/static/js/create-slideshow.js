@@ -133,7 +133,7 @@ function createNewSlideshow() {
     .then(function(response) {
         if (!response.ok) throw new Error(response.statusText)
     })
-    .then(function() { window.location = '/admin' })
+    .then(function() { window.location = '/admin/slideshows' })
     .catch(function (err) {
         console.error(err);
     });

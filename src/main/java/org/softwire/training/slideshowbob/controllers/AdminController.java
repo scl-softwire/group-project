@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AdminController {
-
+    
     @RequestMapping("/admin")
     ModelAndView adminView() {
         return new ModelAndView("admin/admin");
