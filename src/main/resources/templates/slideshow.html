@@ -14,6 +14,9 @@
         <div id="goFullScreen">
             <button class="fullscreenbutton" type="submit" onclick="toggleFullScreen();">Full Screen</button>
         </div>
+        <div id="exit-slideshow">
+            <a href="/"><button class="exit-fullscreen-button">X</button></a>
+        </div>
         <ul id="slideshow" class="slideshow">
             <li th:each="imageUrl : ${model}">
                 <span th:style="'background-image: url(' + ${imageUrl} + ');'"></span>
