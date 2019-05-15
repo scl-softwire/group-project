@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!--@thymesVar id="exception" type="java.lang.Exception"-->
 
 <head>
-    <title>Slideshow Bob - Admin Login</title>
+    <title>Error</title>
     <link rel="shortcut icon" href="/images/slide2.png"/>
+
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
-    <link rel="stylesheet" href="/styles/signup.css"/>
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 </head>
 
 <body>
@@ -19,12 +19,15 @@
     <!-- This element is replaced by the HTML in fragments/navbar.html -->
 </div>
 
-<h1>Login</h1>
-<form class="form" action="/login" id="login-form" method="post">
-    <input class="usernameInput" type="text" name="username" placeholder="Username">
-    <input class="passwordInput" type="password" name="password" placeholder="Password">
-    <button class="logInButton" type="submit" id="login-button">Log in!</button>
-</form>
+<div class="container">
+    <div class="jumbotron">
+        <h1><img class="emoji" src="/images/sad.png"></h1>
+        <h1>Oh no, something went wrong</h1>
+        <p class="error-message" th:text="${exception}?${exception.message}:''"></p>
+        <h1>We'll get Sam to fix it</h1>
+    </div>
+</div>
+
 </body>
 
 

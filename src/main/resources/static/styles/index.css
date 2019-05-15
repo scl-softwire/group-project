@@ -27,7 +27,22 @@ body {
 }
 
 .jumbotron p {
-    margin: 15px 0 0 0;
+    margin: 0;
+}
+
+.error-message {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding-bottom: 10px;
+    color: #e60300;
+    text-shadow: -1px 0 #5c86cd, 0 1px #5c86cd, 1px 0 #5c86cd, 0 -1px #5c86cd;
+
+    font-weight: normal;
+    font-size: 56px;
+    line-height: 100%;
+
 }
 
 .index-buttons-container {
