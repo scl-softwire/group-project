@@ -5,10 +5,12 @@
 <head>
     <title>Group Project - Select a Slideshow</title>
     <link rel="shortcut icon" href="/images/slide2.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
 
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
+    <link rel="stylesheet" href="/styles/selectActiveSlideshow.css"/>
 </head>
 
 <body>
@@ -19,17 +21,21 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1>Select A Slideshow to Play</h1>
-        <h4>Please pick a slideshow to play.</h4>
 
-        <form action="/admin/slideshows/select" method="post">
-            <div  th:each="slideshow : ${model.slideshows}">
-            <input name="slideshow" th:value="${slideshow.id}" type="radio">
-            <span th:text="${slideshow.slideshowName}"></span> -
-                <a th:href="@{'/edit-slideshow/' + ${slideshow.id}}">EDIT</a>
-            </div>
-            <input type="submit" value="Submit">
-        </form>
+        <h1>Select A Slideshow to Play</h1>
+        <div class="displayItems">
+            <h4>Please pick a slideshow to play.</h4>
+
+            <form action="/admin/slideshows/select" method="post">
+                <div  th:each="slideshow : ${model.slideshows}">
+                <input name="slideshow" th:value="${slideshow.id}" type="radio">
+                <span th:text="${slideshow.slideshowName}"></span> -
+                    <a th:href="@{'/edit-slideshow/' + ${slideshow.id}}">EDIT</a>
+                </div>
+                <button class="submitButton" type="submit" id="Submit">Submit</button>
+
+            </form>
+        </div>
 
     </div>
 </div>
