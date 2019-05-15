@@ -9,10 +9,7 @@ import org.softwire.training.slideshowbob.services.ImagesService;
 import org.softwire.training.slideshowbob.services.SlideshowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -41,6 +38,12 @@ public class EditSlideshowController {
                 imagesForSlideshow,
                 allImages
         ));
+    }
+
+    @RequestMapping(value = "/edit/{id}/added-image", method = RequestMethod.POST)
+    RedirectView uploadSlide(@PathVariable("id") Integer slideshowId, @ModelAttribute Image image) {
+        slideshowService.uploadSlide(image, slideshowId);
+        return new RedirectView("/admin/slideshows/edit/{id}");
     }
 
     @RequestMapping(value = "/edit/{id}/slide-delete/{slideId}", method = RequestMethod.POST)
