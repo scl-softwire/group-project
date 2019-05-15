@@ -130,3 +130,13 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.dropdown-thumbnail {
+    height: 22px;
+    width: 30px;
+    padding-left: 10px;
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+
+}
