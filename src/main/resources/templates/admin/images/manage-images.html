@@ -35,10 +35,10 @@
         <div class="thumbnail-image-div" th:each="image:${model.images}">
             <a><img class="thumbnail-image" th:src="${image.url}"/></a>
             <div class="overlay">
-                <form th:action="'/admin/images/image-delete/' + ${image.id}" method="post">
+                <form th:action="'/admin/images/delete/' + ${image.id}" method="post">
                     <button class="imagebuttons" type="submit">Delete</button>
                 </form>
-                <a th:href="'/admin/manage/edit/' + ${image.id}"><button class="imagebuttons">Edit</button></a>
+                <a th:href="'/admin/images/edit/' + ${image.id}"><button class="imagebuttons">Edit</button></a>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form th:action="@{/admin/images/added}" method="post">
+                    <form th:action="@{/admin/images/upload}" method="post">
                         <label class="modal-form-field">
                             <span>Author: </span>
                             <input id="author" type="text" name="author" required>

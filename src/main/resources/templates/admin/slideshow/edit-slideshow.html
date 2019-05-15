@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/uploadImage.css"/>
-    <link rel="stylesheet" href="/styles/select-images.css"/>
-
+    <link rel="stylesheet" href="/styles/create-slideshow.css"/>
+    <link rel="stylesheet" href="/styles/editslideshow.css"/>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-    <script src="/js/select-images.js"></script>
+    <script src="/js/create-slideshow.js"></script>
     <script src="/js/edit-slideshow.js"></script>
 
 </head>
@@ -28,7 +28,7 @@
 </div>
 
 <div class="main-content">
-    <h1 th:text="'Slideshow ' + ${model.getSlideshow().getSlideshowName()}" ></h1>
+    <h1 th:text="'Slideshow ' + ${model.getSlideshow().getSlideshowName()}"></h1>
     <div class="thumbnail-image-div">
         <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#modal2">
             <img class="thumbnail-image" alt="upload icon"
@@ -47,7 +47,7 @@
         <div class="thumbnail-image-div" th:each="slide:${model.slides}">
             <a><img class="thumbnail-image" th:src="${slide.slide.url}"/></a>
             <div class="overlay">
-                <form th:action="'/edit-slideshow/' + ${slide.slideshowId} + '/slide-delete/' + ${slide.id}" method="post">
+                <form th:action="'/admin/slideshows/edit/' + ${slide.slideshowId} + '/slide-delete/' + ${slide.id}" method="post">
                     <button class="imagebuttons" type="submit">Delete</button>
                 </form>
             </div>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form th:action="'/edit-slideshow/' + ${model.slideshow.id} + '/added-image'" method="post">
+                    <form th:action="'/admin/slideshows/edit/' + ${model.slideshow.id} + '/add'" method="post">
                         <label class="modal-form-field">
                             <span>Author: </span>
                             <input id="author" type="text" name="author" required>
@@ -103,23 +103,27 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="custom-select" style="width:200px;">
-                    <select>
-                        <option value="0">Select an image:</option>
-                        <option th:each="image:${model.allImages}"
-                                data-th-attr="data-url=${image.url}, data-name=${image.imageName}, data-id=${image.id}"
-                                th:text="${image.imageName}"></option>
-                    </select>
-                        <div class="selected-images-list">
-                            <button type="submit" class="buttonStyle" onclick="addExistingItemToSlideshowList()">Add</button>
-                            <ol id="selections"></ol>
-                            <button class="buttonStyle" onclick="updateSlideshow()">Update</button>
+                    <div class="selectImageContainer">
+                        <div class="custom-select" style="width:200px;">
+                            <select>
+                                <option value="0">Select an image:</option>
+                                <option th:each="image:${model.allImages}"
+                                        data-th-attr="data-url=${image.url}, data-name=${image.imageName}, data-id=${image.id}"
+                                        th:text="${image.imageName}"></option>
+                            </select>
                         </div>
+                        <ol id="selections"></ol>
+                    </div>
+                    <div class="addDeleteContainer">
+                        <button type="submit" class="updateButtonStyle" onclick="addExistingItemToSlideshowList()">Add
+                        </button>
+                        <button class="updateButtonStyle" onclick="updateSlideshow()">Update</button>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 </div>
 </body>

@@ -128,7 +128,7 @@ function createNewSlideshow() {
         slideIds.push(listElements[i].getAttribute('data-id'));
     }
     console.log('Got image IDs: ' + slideIds);
-    fetch('/admin/select-images',{method:'post', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify({
+    fetch('/admin/slideshows/create',{method:'post', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify({
         slideshow: { slideshowName: $('#slideshow-name').val() || 'Slideshow' },
         slideIds: slideIds
     })})
