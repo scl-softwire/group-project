@@ -34,12 +34,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/",
+                        "/favicon.ico",
                         "/js/*",
                         "/styles/*",
+                        "/images/*",
+                        "/error",
                         "/login",
                         "/signup",
-                        "/favicon.ico",
-                        "/images/*",
                         "/slideshow").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login")
