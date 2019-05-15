@@ -46,13 +46,13 @@ public class EditSlideshowController {
     @RequestMapping(value = "/edit/{id}/slide-delete/{slideId}", method = RequestMethod.POST)
     RedirectView deleteSlide(@PathVariable("slideId") Integer slideId, @PathVariable("id") Integer id) {
         slideshowService.deleteSlide(slideId, id);
-        return new RedirectView("/edit/{id}");
+        return new RedirectView("/admin/slideshows/edit/{id}");
     }
 
     @RequestMapping(value = "/edit/{id}/add", method = RequestMethod.POST)
     RedirectView addSlide(@PathVariable("id") Integer slideshowId, @RequestBody ExistingSlides slides) {
         slideshowService.addExistingSlidesToSlideshow(slideshowId, slides.getSlideIds());
-        return new RedirectView("/edit/{id}");
+        return new RedirectView("/admin/slideshows/edit/{id}");
     }
 
 }
