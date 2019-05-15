@@ -1,9 +1,7 @@
 package org.softwire.training.slideshowbob.security;
 
-import org.apache.catalina.SessionEvent;
 import org.apache.catalina.SessionListener;
 import org.softwire.training.slideshowbob.security.security.AuthenticationFailureHandler;
-import org.softwire.training.slideshowbob.security.security.AuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -35,15 +34,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/",
+                        "/favicon.ico",
                         "/js/*",
                         "/styles/*",
+                        "/images/*",
+                        "/error",
                         "/login",
                         "/signup",
-                        "/favicon.ico",
-                        "/images/*",
                         "/slideshow").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
+                .and().formLogin().loginPage("/login")
+                .loginProcessingUrl("/login")
                 .successHandler(successHandler)
                 .failureHandler(failureHandler)
                 .and()
