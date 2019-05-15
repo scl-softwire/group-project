@@ -16,8 +16,9 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         setUseReferer(true);
         String referer = (String) request.getSession().getAttribute("url_prior_login");
+        if (referer == null) referer = "/admin";
         request.getSession().removeAttribute("url_prior_login");
-        getRedirectStrategy().sendRedirect(request,response,referer);
+        getRedirectStrategy().sendRedirect(request, response, referer);
     }
 }
 
