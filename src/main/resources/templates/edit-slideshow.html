@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/uploadImage.css"/>
+    <link rel="stylesheet" href="/styles/select-images.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="/js/select-images.js"></script>
 
 </head>
 <body>
@@ -23,7 +27,14 @@
 </div>
 
 <div class="main-content">
-    <h1 id="all-photographs">All Photographs</h1>
+    <h1 th:text="'Slideshow ' + ${model.getSlideshow().getSlideshowName()}" ></h1>
+    <div class="thumbnail-image-div">
+        <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#modal2">
+            <img class="thumbnail-image" alt="upload icon"
+                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbMnLmCcifVdReL3JQny4hNf-sAr-IpiSnFA4jmraUCqeV4v07"/>
+            <h4>Add Existing Image</h4>
+        </a>
+    </div>
     <div class="thumbnail-image-div">
         <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#myModal">
             <img class="thumbnail-image" alt="upload icon"
@@ -74,6 +85,31 @@
                         <span><!-- spacer --></span>
                         <input class="center-button" type="submit" value="Upload Image"/>
                     </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload an Existing Image:</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="custom-select" style="width:200px;">
+                    <select>
+                        <option value="0">Select an image:</option>
+                        <option th:each="image:${model.allImages}"
+                                data-th-attr="data-url=${image.url}, data-name=${image.imageName}, data-id=${image.id}"
+                                th:text="${image.imageName}"></option>
+                    </select>
+                    </div>
                 </div>
             </div>
 
