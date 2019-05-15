@@ -19,7 +19,7 @@ public class SlideshowService extends DatabaseService {
 
         jdbi.useHandle(handle -> {
             int id = handle.createUpdate("INSERT INTO slideshows " +
-                   "(slideshow_name, author_id) VALUES (:slideshowName, :authorId)")
+                    "(slideshow_name, author_id) VALUES (:slideshowName, :authorId)")
                     .bind("slideshowName", slideshow.getSlideshowName())
                     .bind("authorId", loggedInAs.getId())
                     .executeAndReturnGeneratedKeys("id")
@@ -107,6 +107,20 @@ public class SlideshowService extends DatabaseService {
         });
     }
 
+    public void addExistingSlidesToSlideshow(int slideshowId, List<Integer> slides) {
+        jdbi.useHandle(handle -> {
+            PreparedBatch batch = handle.prepareBatch("INSERT INTO slideshow_slides " +
+                    "(slideshow_id, slide_id) VALUES (:slideshow_id, :slide_id)");
+            for (int i = 0; i < slides.size(); i++) {
+                batch
+                        .bind("slideshow_id", slideshowId)
+                        .bind("slide_id", slides.get(i))
+                        .add();
+            }
+            batch.execute();
+        });
+    }
+
     public List<Slideshow> getAllSlideshows() {
         return jdbi.withHandle(handle -> handle.createQuery(
                 "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name, " +
@@ -124,10 +138,12 @@ public class SlideshowService extends DatabaseService {
                 .execute());
     }
 
-    public Integer getCurrentSlideshow() {
+    public Slideshow getCurrentSlideshow() {
         return jdbi.withHandle(handle -> handle.createQuery(
-                "SELECT id FROM `active-slideshow`")
-        ).mapTo(Integer.class).findOnly();
+                "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name " +
+                        "FROM slideshows INNER JOIN `active-slideshow` " +
+                        "ON `active-slideshow`.id = slideshows.id"
+        ).mapToBean(Slideshow.class).first());
     }
 }
 

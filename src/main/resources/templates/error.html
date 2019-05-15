@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!--@thymesVar id="exception" type="java.lang.Exception"-->
 
 <head>
-    <title>Group Project - Admin</title>
+    <title>Error</title>
     <link rel="shortcut icon" href="/images/slide2.png"/>
 
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
@@ -20,14 +21,10 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1>Admin Page</h1>
-
-        <div class="index-buttons-container">
-            <a href="/admin/manage"><button class="btn dots-button">Manage Images</button></a>
-            <a href="/admin/select-images"><button class="btn sawtooth-button">Create A New Slideshow</button></a>
-            <a href="/admin/slideshows/select"><button class="btn sawtooth-button">Manage Slideshows</button></a>
-        </div>
-
+        <h1><img class="emoji" src="/images/sad.png"></h1>
+        <h1>Oh no, something went wrong</h1>
+        <p class="error-message" th:text="${exception}?${exception.message}:''"></p>
+        <h1>We'll get Sam to fix it</h1>
     </div>
 </div>
 
