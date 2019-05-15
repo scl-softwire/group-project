@@ -124,10 +124,12 @@ public class SlideshowService extends DatabaseService {
                 .execute());
     }
 
-    public Integer getCurrentSlideshow() {
+    public Slideshow getCurrentSlideshow() {
         return jdbi.withHandle(handle -> handle.createQuery(
-                "SELECT id FROM `active-slideshow`")
-        ).mapTo(Integer.class).findOnly();
+                "SELECT slideshows.id, slideshows.author_id, slideshows.slideshow_name " +
+                        "FROM slideshows INNER JOIN `active-slideshow` " +
+                        "ON `active-slideshow`.id = slideshows.id"
+        ).mapToBean(Slideshow.class).first());
     }
 }
 
