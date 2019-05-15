@@ -42,7 +42,7 @@ public class AdminController {
     RedirectView createSlideshow(HttpServletRequest request, @RequestBody NewSlideshow newSlideshow) {
         AdminUser loggedInAs = usersService.loadUserByUsername(request.getUserPrincipal().getName());
         slideshowService.createSlideshow(newSlideshow.getSlideshow(), newSlideshow.getSlideIds(),loggedInAs);
-        return new RedirectView("/admin/slideshows/select");
+        return new RedirectView("/admin/slideshows");
     }
 
     @RequestMapping("/manage")
