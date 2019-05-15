@@ -1,0 +1,26 @@
+.updateButtonStyle {
+    padding: 8px 16px;
+    font-family: 'Arima Madurai', cursive;
+    font-size: 15px;
+    height: 40px;
+}
+
+.selectImageContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.addDeleteContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
