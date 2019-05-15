@@ -30,7 +30,7 @@
                 <div  th:each="slideshow : ${model.slideshows}">
                 <input name="slideshow" th:value="${slideshow.id}" type="radio">
                 <span th:text="${slideshow.slideshowName}"></span> -
-                    <a th:href="@{'/edit-slideshow/' + ${slideshow.id}}">EDIT</a>
+                    <a th:href="@{'/admin/slideshows/edit/' + ${slideshow.id}}">EDIT</a>
                 </div>
                 <button class="submitButton" type="submit" id="Submit">Set As Active Slideshow</button>
 

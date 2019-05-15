@@ -20,14 +20,14 @@ public class ManageSlideshowController {
     @Autowired
     SlideshowService slideshowService = new SlideshowService();
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView manageSlideshows() {
         List<Slideshow> slideshowList = slideshowService.getAllSlideshows();
         ManageSlideshowPageModel model = new ManageSlideshowPageModel(slideshowList);
         return new ModelAndView("/admin/slideshow/manage-slideshows.html", "model", model);
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST)
     public RedirectView setActiveSlideshow(@ModelAttribute CurrentSlideshow slideshow) {
         slideshowService.setCurrentSlideshow(slideshow.getSlideshow());
         return new RedirectView("/admin/slideshows");
