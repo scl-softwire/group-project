@@ -54,9 +54,7 @@ public class SlideshowController {
 
     @RequestMapping(value = "/edit-slideshow/{id}/slide-delete/{slideId}", method = RequestMethod.POST)
     RedirectView deleteSlide(@PathVariable("slideId") Integer slideId, @PathVariable("id") Integer id) {
-
         slideshowService.deleteSlide(slideId, id);
-
         return new RedirectView("/edit-slideshow/{id}");
     }
 

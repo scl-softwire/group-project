@@ -32,14 +32,14 @@
     <div class="thumbnail-image-div">
         <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#modal2">
             <img class="thumbnail-image" alt="upload icon"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbMnLmCcifVdReL3JQny4hNf-sAr-IpiSnFA4jmraUCqeV4v07"/>
+                 src="http://cdn.onlinewebfonts.com/svg/img_234957.png"/>
             <h4>Add Existing Image</h4>
         </a>
     </div>
     <div class="thumbnail-image-div">
         <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#myModal">
             <img class="thumbnail-image" alt="upload icon"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbMnLmCcifVdReL3JQny4hNf-sAr-IpiSnFA4jmraUCqeV4v07"/>
+                 src="https://static.thenounproject.com/png/625182-200.png"/>
             <h4>Upload Image</h4>
         </a>
     </div>
@@ -47,7 +47,7 @@
         <div class="thumbnail-image-div" th:each="slide:${model.slides}">
             <a><img class="thumbnail-image" th:src="${slide.slide.url}"/></a>
             <div class="overlay">
-                <form th:action="'/edit-slideshow/' + ${slide.slideshowId} + '/slide-delete/' + ${slide.slideId}" method="post">
+                <form th:action="'/edit-slideshow/' + ${slide.slideshowId} + '/slide-delete/' + ${slide.id}" method="post">
                     <button class="imagebuttons" type="submit">Delete</button>
                 </form>
             </div>
