@@ -33,6 +33,9 @@ public class AdminController {
         this.slideshowService = slideshowService;
     }
 
+    // Mapping - "/"
+    // ModelAndView manageImages GET -->> admin/admin.html
+
     @RequestMapping("")
     ModelAndView admin() {
         return new ModelAndView("admin");

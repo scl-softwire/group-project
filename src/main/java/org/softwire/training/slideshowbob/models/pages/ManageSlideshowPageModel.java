@@ -4,11 +4,11 @@ import org.softwire.training.slideshowbob.models.database.Slideshow;
 
 import java.util.List;
 
-public class SelectActiveSlideshowPageModel {
+public class ManageSlideshowPageModel {
 
     private List<Slideshow> slideshows;
 
-    public SelectActiveSlideshowPageModel(List<Slideshow> slideshows) {
+    public ManageSlideshowPageModel(List<Slideshow> slideshows) {
         this.slideshows = slideshows;
     }
 
