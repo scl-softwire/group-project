@@ -18,6 +18,8 @@ function createDropdown() {
             create a new DIV that will act as an option item:*/
             c = document.createElement("DIV");
             c.innerHTML = selElmnt.options[j].innerHTML;
+            $(c).append(`<img class="dropdown-thumbnail" src="${selElmnt.options[j].getAttribute('data-url')}"/>`);
+            console.log("text " + c.innerText + " HTML " +  c.innerHTML);
             c.addEventListener("click", function (e) {
                 /*when an item is clicked, update the original select box,
                 and the selected item:*/
@@ -26,7 +28,7 @@ function createDropdown() {
                 h = this.parentNode.previousSibling;
                 for (i = 0; i < s.length; i++) {
                     s.options[i].removeAttribute('class');
-                    if (s.options[i].innerHTML === this.innerHTML) {
+                    if (this.innerHTML.startsWith(s.options[i].innerHTML)) {
                         s.options[i].setAttribute('class', 'selected');
                         s.selectedIndex = i;
                         h.innerHTML = this.innerHTML;
@@ -133,7 +135,7 @@ function createNewSlideshow() {
     .then(function(response) {
         if (!response.ok) throw new Error(response.statusText)
     })
-    .then(function() { window.location = '/admin' })
+    .then(function() { window.location = '/admin/slideshows' })
     .catch(function (err) {
         console.error(err);
     });
