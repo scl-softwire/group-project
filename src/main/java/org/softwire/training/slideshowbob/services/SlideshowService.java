@@ -146,9 +146,13 @@ public class SlideshowService extends DatabaseService {
                             "ON `active-slideshow`.id = slideshows.id"
             ).mapToBean(Slideshow.class).first());
         } catch (Exception e) {
-            return jdbi.withHandle(handle -> handle.createQuery(
-                    "SELECT * from slideshows"
-            ).mapToBean(Slideshow.class).first());
+            try {
+                return jdbi.withHandle(handle -> handle.createQuery(
+                        "SELECT * from slideshows"
+                ).mapToBean(Slideshow.class).first());
+            } catch (Exception e2) {
+                throw new RuntimeException("There are currently no slideshows created - create one to see it listed here");
+            }
         }
     }
 }
