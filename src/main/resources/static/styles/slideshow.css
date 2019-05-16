@@ -37,13 +37,15 @@ body {
     top: 20px;
     left: 20px;
     background-color: #d1d1d1;
-    opacity: 0.5;
+    opacity: 0;
     border: 1px solid white;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    -webkit-transition: opacity 0.75s;
+    transition: opacity 0.75s;
 }
 
 .fullscreenbutton:hover {
@@ -56,13 +58,15 @@ body {
     top: 20px;
     right: 20px;
     background-color: #d1d1d1;
-    opacity: 0.5;
+    opacity: 0;
     border: 1px solid white;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    -webkit-transition: opacity 0.75s;
+    transition: opacity 0.75s;
 }
 
 .exit-fullscreen-button:hover {
