@@ -3,7 +3,7 @@ package org.softwire.training.slideshowbob.models.database;
 public class CurrentSlideshow {
     private int slideshow;
 
-    public int getSlideshow() {
+    public int getSlideshowId() {
         return slideshow;
     }
 

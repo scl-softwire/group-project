@@ -1,7 +1,9 @@
 package org.softwire.training.slideshowbob.security;
 
 import org.apache.catalina.SessionListener;
+import org.softwire.training.slideshowbob.models.database.AdminUser;
 import org.softwire.training.slideshowbob.security.security.AuthenticationFailureHandler;
+import org.softwire.training.slideshowbob.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import javax.annotation.PostConstruct;
 
 @Configuration
 @EnableWebSecurity
@@ -40,7 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/images/*",
                         "/error",
                         "/login",
-                        "/signup",
                         "/slideshow").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login")
@@ -62,5 +65,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public SessionListener listener(){
         return sessionEvent -> sessionEvent.getSession().setMaxInactiveInterval(10);
+    }
+
+    @Bean
+    public UsersService usersService(){return new UsersService(bCryptPasswordEncoder());}
+
+    @PostConstruct
+    public void init() {
+        AdminUser user = new AdminUser();
+        user.setUsername("root");
+        user.setPassword("pass");
+        if (usersService().getAlladmins().stream()
+                .noneMatch(user1 -> user1.getUsername().equalsIgnoreCase(user.getUsername())))
+            usersService().createUser(user);
     }
 }

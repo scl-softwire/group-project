@@ -1,4 +1,5 @@
 var selectedImageIndex = -1;
+var timeout = null;
 
 function nextImage() {
     var images = $('#slideshow li span');
@@ -35,7 +36,7 @@ function toggleFullScreen() {
     }
 }
 
-document.onfullscreenchange = function() {
+document.onfullscreenchange = function () {
     var x = document.getElementById("goFullScreen");
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -44,7 +45,7 @@ document.onfullscreenchange = function() {
     }
 };
 
-document.onwebkitfullscreenchange = function() {
+document.onwebkitfullscreenchange = function () {
     var x = document.getElementById("goFullScreen");
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -58,4 +59,25 @@ function loopImages() {
     setTimeout(loopImages, 6000);
 }
 
+
+function revealButtons () {
+
+    var exitButton = document.getElementsByClassName("exit-fullscreen-button")[0];
+    var fullScreenButton = document.getElementsByClassName("fullscreenbutton")[0];
+
+
+    if (timeout !== null) {
+        clearTimeout(timeout);
+    }
+
+    exitButton.style.opacity = "0.5";
+    fullScreenButton.style.opacity = "0.5";
+    timeout = setTimeout(function () {
+        exitButton.style.opacity = "0";
+        fullScreenButton.style.opacity = "0";
+    }, 3000);
+}
+
+document.addEventListener("mousemove", revealButtons);
 document.addEventListener('DOMContentLoaded', loopImages);
+
