@@ -27,7 +27,7 @@ public class ManageSlideshowController {
         List<Slideshow> slideshowList = slideshowService.getAllSlideshows();
         Slideshow activeSlideshow = slideshowService.getCurrentSlideshow();
         ManageSlideshowPageModel model = new ManageSlideshowPageModel(slideshowList, activeSlideshow, fail.isPresent());
-        return new ModelAndView("/admin/slideshow/manage-slideshows", "model", model);
+        return new ModelAndView("admin/slideshow/manage-slideshows", "model", model);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
