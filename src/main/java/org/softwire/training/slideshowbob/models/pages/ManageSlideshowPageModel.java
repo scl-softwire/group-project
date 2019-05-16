@@ -11,6 +11,7 @@ public class ManageSlideshowPageModel {
     private boolean failed;
 
     public ManageSlideshowPageModel(List<Slideshow> slideshows, Slideshow activeSlideshow, boolean failed) {
+
         this.slideshows = slideshows;
         this.activeSlideshow = activeSlideshow;
         this.failed = failed;
