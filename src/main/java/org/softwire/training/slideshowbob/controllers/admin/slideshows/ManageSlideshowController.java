@@ -30,7 +30,7 @@ public class ManageSlideshowController {
 
     @RequestMapping(value = "",method = RequestMethod.POST)
     public RedirectView setActiveSlideshow(@ModelAttribute CurrentSlideshow slideshow) {
-        slideshowService.setCurrentSlideshow(slideshow.getSlideshow());
+        slideshowService.setCurrentSlideshow(slideshow.getSlideshowId());
         return new RedirectView("/admin/slideshows");
     }
 

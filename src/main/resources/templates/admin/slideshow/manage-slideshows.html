@@ -31,7 +31,8 @@
                 <input name="slideshow" th:value="${slideshow.id}" th:checked="${model.activeSlideshow.id==slideshow.id}"
                        type="radio" required>
                 <span th:text="${slideshow.slideshowName}"></span> -
-                    <a th:href="@{'/admin/slideshows/edit/' + ${slideshow.id}}">EDIT</a>
+                    <a th:href="@{'/admin/slideshows/edit/' + ${slideshow.id}}">Edit</a>
+                    <a th:href="@{'/admin/slideshows/delete/' + ${slideshow.id}}">Delete</a>
                 </div>
                 <button class="submitButton" type="submit" id="Submit">Set As Active Slideshow</button>
 
