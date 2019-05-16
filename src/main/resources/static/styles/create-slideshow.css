@@ -37,6 +37,7 @@
     cursor: pointer;
     user-select: none;
     height: 40px;
+    text-align: start;
 }
 
 /*style items (options):*/
@@ -48,6 +49,7 @@
     right: 0;
     z-index: 99;
     font-size: 15px;
+    text-align: start;
 }
 
 /*hide the items when the select box is closed:*/

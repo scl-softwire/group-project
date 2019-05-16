@@ -15,7 +15,7 @@
             <button class="fullscreenbutton" type="submit" onclick="toggleFullScreen();">Full Screen</button>
         </div>
         <div id="exit-slideshow">
-            <a href="/"><button class="exit-fullscreen-button" onclick="exitFullScreen()">X</button></a>
+            <button class="exit-fullscreen-button" onclick="javascript:history.back()">X</button>
         </div>
         <ul id="slideshow" class="slideshow">
             <li th:each="slide : ${model.slideshowSlides}">
