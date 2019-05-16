@@ -67,11 +67,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return sessionEvent -> sessionEvent.getSession().setMaxInactiveInterval(10);
     }
 
+    @Bean
+    public UsersService usersService(){return new UsersService(bCryptPasswordEncoder());}
+
     @PostConstruct
     public void init() {
         AdminUser user = new AdminUser();
         user.setUsername("root");
         user.setPassword("pass");
-        new UsersService(bCryptPasswordEncoder()).createUser(user);
+        if (usersService().getAlladmins().stream()
+                .noneMatch(user1 -> user1.getUsername().equalsIgnoreCase(user.getUsername())))
+            usersService().createUser(user);
     }
 }
