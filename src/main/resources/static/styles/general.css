@@ -34,6 +34,19 @@ body {
     text-align: center;
 }
 
+.btn1 {
+    background: none;
+    border: 2px solid;
+    border-bottom-width: 4px;
+    font: inherit;
+    font-size: 20px;
+    letter-spacing: inherit;
+    padding: 1em 2em;
+    text-transform: inherit;
+    transition: color 1s;
+    text-align: center;
+}
+
 /* BUTTON 6 */
 .btn6, .btn6:link, .btn6:visited {
     padding: 13px 13px;
@@ -52,10 +65,10 @@ body {
     border-radius: 30px;
 }
 
-.thumbnails {
-    height: 20px;
-    width: 20px;
-}
+/*.thumbnails {*/
+    /*height: 20px;*/
+    /*width: 20px;*/
+/*}*/
 
 .emoji {
     height: 54px;

@@ -9,6 +9,7 @@ public class ManageSlideshowPageModel {
     private List<Slideshow> slideshows;
     private Slideshow activeSlideshow;
 
+
     public ManageSlideshowPageModel(List<Slideshow> slideshows, Slideshow activeSlideshow) {
         this.slideshows = slideshows;
         this.activeSlideshow = activeSlideshow;
