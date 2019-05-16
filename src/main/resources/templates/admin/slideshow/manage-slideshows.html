@@ -25,6 +25,7 @@
         <h1>Manage Slideshows</h1>
         <div class="main-content">
             <h4>Please pick a slideshow to play.</h4>
+            <h4><span th:text="${model.failed} ? 'Unable to Delete Active Slideshow':''"></span></h4>
             <form action="/admin/slideshows" method="post" >
                 <div class="thumbnails">
                     <div class = "thumbnail-image-div" th:each="slideshow : ${model.slideshows}">
@@ -32,9 +33,9 @@
                         <h1><span th:text="${slideshow.slideshowName}"></span></h1>
                         <div><input name="slideshow" th:value="${slideshow.id}" th:checked="${model.activeSlideshow.id==slideshow.id}"
                                                                            type="radio" required align="right">
-                            <a th:href="@{'/admin/slideshows/edit/' + ${slideshow.id}}"><button class="imagebuttons" type="button">EDIT</button></a></div>
-                        <!--<input name="slideshow" th:value="${slideshow.id}" th:checked="${model.activeSlideshow.id==slideshow.id}"-->
-                        <!--type="radio" required align="right">-->
+                            <a th:href="@{'/admin/slideshows/edit/' + ${slideshow.id}}"><button class="imagebuttons" type="button">EDIT</button></a>
+                            <a th:href="@{'/admin/slideshows/delete/' + ${slideshow.id}}"><button class="imagebuttons" type="button">Delete</button></a>
+                        </div>
                     </div>
                 </div>
             </form>

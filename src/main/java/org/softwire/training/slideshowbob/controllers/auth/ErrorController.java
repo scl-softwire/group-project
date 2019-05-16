@@ -12,7 +12,7 @@ public class ErrorController {
     @ExceptionHandler(value = Exception.class)
     public ModelAndView handleError(HttpServletRequest request, Exception e)
     {
-        return new ModelAndView("/error", "exception", e);
+        return new ModelAndView("error", "exception", e);
     }
 
 }
