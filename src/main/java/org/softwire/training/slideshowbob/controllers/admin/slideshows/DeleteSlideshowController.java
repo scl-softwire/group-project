@@ -15,8 +15,13 @@ public class DeleteSlideshowController {
     SlideshowService slideshowService = new SlideshowService();
 
     @RequestMapping(value = "/delete/{id}")
-    public RedirectView deleteSlideshow(@PathVariable("id") Integer id){
-        slideshowService.deleteSlideshow(id);
-        return new RedirectView("/admin/slideshows");
+    public RedirectView deleteSlideshow(@PathVariable("id") Integer id) {
+        // Ensure Slideshow is not Current Slideshow
+        if (slideshowService.getSlideshow(id).getId() == slideshowService.getCurrentSlideshow().getId())
+            return new RedirectView("/admin/slideshows?fail");
+        else {
+            slideshowService.deleteSlideshow(id);
+            return new RedirectView("/admin/slideshows");
+        }
     }
 }

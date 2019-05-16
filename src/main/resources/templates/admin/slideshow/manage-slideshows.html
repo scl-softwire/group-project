@@ -25,6 +25,7 @@
         <h1>Manage Slideshows</h1>
         <div class="displayItems">
             <h4>Please pick a slideshow to play.</h4>
+            <h4><span th:text="${model.failed} ? 'Unable to Delete Active Slideshow':''"></span></h4>
 
             <form action="/admin/slideshows" method="post">
                 <div  th:each="slideshow : ${model.slideshows}">
