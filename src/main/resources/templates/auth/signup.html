@@ -19,6 +19,7 @@
 </div>
 
 <h1>Sign Up to be an Admin</h1>
+<h4><span th:text="${model} ? 'Unable to sign-up. Please Try Again':''"></span></h4>
 
 <form method="post" action="/signup">
     <div class="form-row">
