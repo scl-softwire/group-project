@@ -50,6 +50,8 @@
     z-index: 99;
     font-size: 15px;
     text-align: start;
+    max-height: 60vh;
+    overflow: auto;
 }
 
 /*hide the items when the select box is closed:*/
