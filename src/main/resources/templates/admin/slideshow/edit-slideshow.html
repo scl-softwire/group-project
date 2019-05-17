@@ -12,7 +12,7 @@
     <title>Group Project - Home</title>
 
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:200" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/general.css"/>
+    <!--<link rel="stylesheet" href="/styles/general.css"/>-->
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/uploadImage.css"/>
     <link rel="stylesheet" href="/styles/create-slideshow.css"/>
@@ -28,7 +28,7 @@
 </div>
 
 <div class="main-content">
-    <h1 th:text="'Slideshow ' + ${model.getSlideshow().getSlideshowName()}"></h1>
+    <h1 class="thumbnails" th:text="'Slideshow ' + ${model.getSlideshow().getSlideshowName()}"></h1>
     <div class="thumbnail-image-div">
         <a type="button" class="thumbnail-image" data-toggle="modal" data-target="#modal2">
             <img class="thumbnail-image" alt="upload icon"
