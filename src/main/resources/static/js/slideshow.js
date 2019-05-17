@@ -12,19 +12,7 @@ function nextImage() {
     selectedImageIndex = nextIndex;
 }
 
-function enterFullScreen() {
-    if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-    } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen();
-    } else if (document.documentElement.mozRequestFullscreen) {
-        document.documentElement.mozRequestFullscreen();
-    } else if (document.documentElement.msRequestFullscreen) {
-        document.documentElement.msRequestFullscreen();
-    }
-}
-
-function exitFullscreen(){
+function exit() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
@@ -37,10 +25,18 @@ function exitFullscreen(){
 }
 
 function toggleFullScreen() {
-    if (!document.fullscreenElement && !document.webkitFullScreenElement && !document.mozFullScreenElement && !document.msFullScreenElement) {
-        enterFullScreen();
+   if (!document.fullscreenElement && !document.webkitFullScreenElement && !document.mozFullScreenElement && !document.msFullScreenElement) {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.mozRequestFullscreen) {
+            document.documentElement.mozRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+            document.documentElement.msRequestFullscreen();
+        }
     } else {
-        exitFullscreen();
+        exit();
     }
 }
 
